@@ -1,0 +1,325 @@
+<div class="container-fluid campaign-container">
+  <div class="row campaign-row">
+    <div class="col-md-1 p-0">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-11">
+      <div class="compaign container">
+        <h5 class="mb-2">Settings</h5>
+        <div class="setting-tab">
+          <nav>
+            <div class="nav nav-tabs mb-4" id="nav-tab" role="tablist">
+              <button
+                class="nav-link active"
+                id="nav-home-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-home"
+                type="button"
+                role="tab"
+                aria-controls="nav-home"
+                aria-selected="true"
+              >
+                My Account
+              </button>
+              <button
+                class="nav-link"
+                id="nav-profile-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-profile"
+                type="button"
+                role="tab"
+                aria-controls="nav-profile"
+                aria-selected="false"
+              >
+                My Business
+              </button>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="nav-home"
+              role="tabpanel"
+              aria-labelledby="nav-home-tab"
+            >
+              <div class="row personal-detail">
+                <div class="col-sm-3">
+                  <h1>Personal Details</h1>
+                </div>
+                <div class="col-sm-9">
+                  <form class="detail">
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label"
+                        >First Name</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label"
+                        >Last Name</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label"
+                        >Email Address</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label"
+                        >Mobile Number</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                      />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary update">
+                      Update
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <div class="row personal-detail">
+                <div class="col-sm-3">
+                  <h1>Password</h1>
+                </div>
+                <div class="col-sm-9">
+                  <form class="detail">
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label"
+                        >Verify current password</label
+                      >
+                      <input
+                        type=""
+                        class="form-control"
+                        id=""
+                        aria-describedby="emailHelp"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <label for="exampleInputEmail1" class="form-label"
+                          >New password</label
+                        >
+                        <p>Generate strong password</p>
+                      </div>
+
+                      <input
+                        type=""
+                        class="form-control"
+                        id=""
+                        aria-describedby="emailHelp"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="d-flex">
+                            <div class="circle"></div>
+                            <h6>One lowercase character</h6>
+                          </div>
+                          <div class="d-flex">
+                            <div class="circle"></div>
+                            <h6>One uppercase character</h6>
+                          </div>
+
+                          <div class="d-flex">
+                            <div class="circle"></div>
+                            <h6>One Number</h6>
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="d-flex">
+                            <div class="circle"></div>
+                            <h6>One special character</h6>
+                          </div>
+                          <div class="d-flex">
+                            <div class="circle"></div>
+                            <h6>8 characters minimum</h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label"
+                        >Confirm new password</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                      />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary update">
+                      Update
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <div class="row personal-detail">
+                <div class="col-sm-3">
+                  <h1>Account Notifications</h1>
+                </div>
+                <div class="col-sm-9">
+                  <div class="details">
+                    <div class="emails">
+                      I'd like to receive the following emails:
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-8">
+                        <div>
+                          <p>Confirmation when a campaign is sent</p>
+                          <p>Monthly account summary</p>
+                          <p>Loyaltoo Updates</p>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="d-flex mb-2">
+                          <div class="form-check px-4">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault1"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault1"
+                            >
+                              Yes
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault1"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault1"
+                            >
+                              No
+                            </label>
+                          </div>
+                        </div>
+                        <div class="d-flex mb-2">
+                          <div class="form-check px-4">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault1"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault1"
+                            >
+                              Yes
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault1"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault1"
+                            >
+                              No
+                            </label>
+                          </div>
+                        </div>
+                        <div class="d-flex">
+                          <div class="form-check px-4">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault1"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault1"
+                            >
+                              Yes
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault1"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault1"
+                            >
+                              No
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary update">
+                      Save
+                    </button>
+                  </div>
+                </div>
+                <div class="footer-seting">
+                  <div><p>Privacy and Terms</p></div>
+                  <div><p>©2021 Loyaltoo® All rights reserved.</p></div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="nav-profile"
+              role="tabpanel"
+              aria-labelledby="nav-profile-tab"
+            >
+              ...
+            </div>
+            <div
+              class="tab-pane fade"
+              id="nav-contact"
+              role="tabpanel"
+              aria-labelledby="nav-contact-tab"
+            >
+              ...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CompaignComponent } from './compaign/compaign.component';
 import { NewCompaignComponent } from './new-compaign/new-compaign.component';
+import { SingleCompaignComponent } from './single-compaign/single-compaign.component';
+import { DeliveryComponent } from './delivery/delivery.component';
+import { BatchComponent } from './batch/batch.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { NewCompaignComponent } from './new-compaign/new-compaign.component';
     SidebarComponent,
     DashboardComponent,
     CompaignComponent,
-    NewCompaignComponent
+    NewCompaignComponent,
+    SingleCompaignComponent,
+    DeliveryComponent,
+    BatchComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

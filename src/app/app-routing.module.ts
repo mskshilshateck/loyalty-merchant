@@ -4,6 +4,10 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CompaignComponent } from './compaign/compaign.component';
 import { NewCompaignComponent } from './new-compaign/new-compaign.component';
+import { SingleCompaignComponent } from './single-compaign/single-compaign.component';
+import { DeliveryComponent } from './delivery/delivery.component';
+import { BatchComponent } from './batch/batch.component';
+import { SettingsComponent } from './settings/settings.component';
 const routes: Routes = [
   {
     path: '',
@@ -20,6 +24,22 @@ const routes: Routes = [
   {
     path: 'newcompaign',
     component: NewCompaignComponent,
+  },
+  {
+    path: 'singlecompaign',
+    component: SingleCompaignComponent,
+  },
+  {
+    path: 'delivery',
+    component: DeliveryComponent,
+  },
+  {
+    path: 'batch',
+    component: BatchComponent,
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent,
   },
 ];
 
