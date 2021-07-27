@@ -1,13 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 // import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { Label,Colors } from 'ng2-charts';
+import { catchError } from 'rxjs/operators';
+import {UserapiService} from "../user/userapi.service"
+import * as UserActions from '../login/user.action'
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.sass']
 })
 export class DashboardComponent implements OnInit {
+  public userDetail : any = {};
   public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
@@ -95,11 +102,15 @@ export class DashboardComponent implements OnInit {
       backgroundColor:"#D82C4F"
     },
   ]
-  constructor() { }
-
+  constructor(private store: Store,private userservice: UserapiService) { }
   ngOnInit(): void {
+    let token = localStorage.getItem('token') || ""
+    this.userservice.getProfile(token).pipe(catchError(this.userservice.handleError)).subscribe(data => {
+      this.userDetail = data
+    })
+    
+  // this.store.select(state => state).subscribe(data => this.userDetail = data)
   }
-
   public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
     console.log(event, active);
   }
