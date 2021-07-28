@@ -49,25 +49,23 @@
                 <div class="col-sm-9">
                   <form class="detail">
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label"
-                        >First Name</label
-                      >
+                      <label for="name" class="form-label">First Name</label>
                       <input
-                        type="email"
+                        type="text"
                         class="form-control"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
+                        id="name"
+                        [value]="userDetail.data.firstName"
+                        (change)="onChange('firstname', $event)"
                       />
                     </div>
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label"
-                        >Last Name</label
-                      >
+                      <label for="lastname" class="form-label">Last Name</label>
                       <input
-                        type="email"
+                        type="text"
                         class="form-control"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
+                        id="lastname"
+                        [value]="userDetail.data.lastName"
+                        (change)="onChange('lastname', $event)"
                       />
                     </div>
                     <div class="mb-3">
@@ -78,22 +76,31 @@
                         type="email"
                         class="form-control"
                         id="exampleInputEmail1"
+                        [value]="userDetail.data.email"
                         aria-describedby="emailHelp"
+                        (change)="onChange('email', $event)"
                       />
                     </div>
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label"
+                      <label for="mobile" class="form-label"
                         >Mobile Number</label
                       >
                       <input
-                        type="email"
+                        type="text"
                         class="form-control"
-                        id="exampleInputEmail1"
+                        id="mobile"
+                        [value]="userDetail.data.phoneNo"
                         aria-describedby="emailHelp"
+                        (change)="onChange('mobileNumber', $event)"
                       />
                     </div>
 
-                    <button type="submit" class="btn btn-primary update">
+                    <button
+                      type="submit"
+                      class="btn btn-primary update"
+                      id="updateBtn"
+                      (click)="updateProfile()"
+                    >
                       Update
                     </button>
                   </form>
@@ -118,7 +125,11 @@
                     </div>
                     <div class="mb-3">
                       <div
-                        class="d-flex justify-content-between align-items-center"
+                        class="
+                          d-flex
+                          justify-content-between
+                          align-items-center
+                        "
                       >
                         <label for="exampleInputEmail1" class="form-label"
                           >New password</label
@@ -500,7 +511,7 @@
                           <div class="download">Download Invoice</div>
                         </div>
                       </div>
-                      <div class="row ">
+                      <div class="row">
                         <div class="col-sm-2">
                           <div class="date-text">Feb 13, 2021</div>
                         </div>

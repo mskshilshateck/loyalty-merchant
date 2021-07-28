@@ -26,4 +26,11 @@ getProfile(token: string){
   .set('Authorization',token)
   return this.http.get(`${this.apiURL}/Vender/getProfile`, {'headers':headers})
 }
+updateMerchantProfile(token:string,body: Object){
+  const headers= new HttpHeaders()
+  .set('content-type', 'application/json')
+  .set('Access-Control-Allow-Origin', '*')
+  .set('Authorization',token)
+  return this.http.put(`${this.apiURL}/Vender/updateProfile`,body,{headers:headers})
+}
 }
