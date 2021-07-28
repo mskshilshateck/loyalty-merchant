@@ -8,6 +8,10 @@ import {
   AuthguardService as AuthGuard 
 } from './auth/authguard.service';
 
+import { SingleCompaignComponent } from './single-compaign/single-compaign.component';
+import { DeliveryComponent } from './delivery/delivery.component';
+import { BatchComponent } from './batch/batch.component';
+import { SettingsComponent } from './settings/settings.component';
 const routes: Routes = [
   {
     path: '',
@@ -20,7 +24,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'compaign',
+    path: 'campaign',
     component: CompaignComponent,
     canActivate: [AuthGuard]
 
@@ -29,6 +33,22 @@ const routes: Routes = [
     path: 'newcompaign',
     component: NewCompaignComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'singlecompaign',
+    component: SingleCompaignComponent,
+  },
+  {
+    path: 'delivery',
+    component: DeliveryComponent,
+  },
+  {
+    path: 'batch',
+    component: BatchComponent,
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent,
   },
 ];
 

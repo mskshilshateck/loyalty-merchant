@@ -8,11 +8,8 @@
         <span class="flat-text"
           >Flat White <img src="/assets/images/arrowdown.svg"
         /></span>
-        <h5 class="mb-2">Campaigns</h5>
-        <p>
-          Campaign allows you to drive footfall and<br />
-          customize your customer experience.
-        </p>
+        <h5 class="mb-2">Delivery</h5>
+        <p>Award stamps to customers ordering from home.</p>
         <div class="border-bottom"></div>
         <div class="compaign-filter">
           <div
@@ -49,21 +46,17 @@
               </ul>
             </div>
             <div>
-              <button
-                type="button"
-                class="btn btn-primary request"
-                (click)="htmlInsideModal.open()"
-              >
-                REQUEST CAMPAIGN
-              </button>
+              <a [routerLink]="['/batch']" class="btn btn-primary request">
+                New batch
+              </a>
             </div>
           </div>
           <div class="filter-table">
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">Campaigns</th>
-                  <th scope="col">Schedule Date</th>
+                  <th scope="col">Delivery Batch</th>
+                  <th scope="col">Date generated</th>
                   <th scope="col">Progress</th>
                   <th scope="col">Status</th>
                   <th scope="col">Actions</th>
@@ -73,20 +66,21 @@
                 <tr>
                   <td scope="row">
                     <div class="compaign-data">
-                      <h6>Campaign Title 01</h6>
-                      <span class="d-block">All Customers</span>
+                      <h6>Batch Title 01</h6>
                       <span class="d-block text-sent"
-                        >Sent to 1,205 customers</span
+                        >1500 codes generated</span
                       >
                     </div>
                   </td>
 
-                  <td><span class="d-block">#Apr 11, 2021</span></td>
-                  <td>23%</td>
+                  <td><span class="d-block">Aug 12th 2021</span></td>
+                  <td>87%</td>
                   <td><span class="badge bg-success">Active</span></td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn border">view</button>
+                      <button type="button" class="btn border">
+                        view batch
+                      </button>
                       <button
                         type="button"
                         class="btn border dropdown-toggle dropdown-toggle-split"
@@ -107,20 +101,21 @@
                 <tr>
                   <td scope="row">
                     <div class="compaign-data">
-                      <h6>Campaign Title 01</h6>
-                      <span class="d-block">All Customers</span>
+                      <h6>Batch Title 01</h6>
                       <span class="d-block text-sent"
-                        >Sent to 1,205 customers</span
+                        >1500 codes generated</span
                       >
                     </div>
                   </td>
 
-                  <td><span class="d-block">#Apr 11, 2021</span></td>
-                  <td>23%</td>
+                  <td><span class="d-block">Aug 12th 2021</span></td>
+                  <td>87%</td>
                   <td><span class="badge bg-success">Active</span></td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn border">view</button>
+                      <button type="button" class="btn border">
+                        view batch
+                      </button>
                       <button
                         type="button"
                         class="btn border dropdown-toggle dropdown-toggle-split"
@@ -141,54 +136,21 @@
                 <tr>
                   <td scope="row">
                     <div class="compaign-data">
-                      <h6>Campaign Title 01</h6>
-                      <span class="d-block">All Customers</span>
+                      <h6>Batch Title 01</h6>
                       <span class="d-block text-sent"
-                        >Sent to 1,205 customers</span
+                        >1500 codes generated</span
                       >
                     </div>
                   </td>
 
-                  <td><span class="d-block">#Apr 11, 2021</span></td>
-                  <td>23%</td>
+                  <td><span class="d-block">Aug 12th 2021</span></td>
+                  <td>87%</td>
                   <td><span class="badge bg-success">Active</span></td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn border">view</button>
-                      <button
-                        type="button"
-                        class="btn border dropdown-toggle dropdown-toggle-split"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        <span class="visually-hidden">Toggle Dropdown</span>
+                      <button type="button" class="btn border">
+                        view batch
                       </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li>
-                          <a class="dropdown-item" href="#">Another action</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td scope="row">
-                    <div class="compaign-data">
-                      <h6>Campaign Title 01</h6>
-                      <span class="d-block">All Customers</span>
-                      <span class="d-block text-sent"
-                        >Sent to 1,205 customers</span
-                      >
-                    </div>
-                  </td>
-
-                  <td><span class="d-block">#Apr 11, 2021</span></td>
-                  <td>23%</td>
-                  <td><span class="badge bg-success">Active</span></td>
-                  <td>
-                    <div class="btn-group">
-                      <button type="button" class="btn border">view</button>
                       <button
                         type="button"
                         class="btn border dropdown-toggle dropdown-toggle-split"
@@ -212,25 +174,5 @@
         </div>
       </div>
     </div>
-    <button class="big">Raw HTML inside modal</button>
-    <modal #htmlInsideModal class="campaign-modal">
-      <ng-template #modalHeader
-        ><h4>Request new Campaign</h4>
-        <br />
-      </ng-template>
-      <ng-template #modalBody>
-        <label for="exampleInputEmail1" class="form-label">Campaign Name</label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-        />
-      </ng-template>
-      <ng-template #modalFooter>
-        <button>Cancle</button>
-        <button>Begin</button>
-      </ng-template>
-    </modal>
   </div>
 </div>

@@ -2,11 +2,57 @@
     height: 100vh
     .campaign-row
         height: 100%
+        .modal
+            .campaign-modal
+                opacity: 0
+                transition: opacity 0.2s ease-in
+
+            &-content
+                color: #333
+                background-color: #fff
+                padding: 25px
+
+            &-header
+                display: flex
+                padding-bottom: 14px
+
+            &-header  > h2
+                flex: 1
+
+            &-header .close
+                background-color: #fff
+                font-weight: 100
+                font-size: 2.5rem
+                border: 0
+                border-radius: 999px
+                padding: 0
+                margin: 0
+                line-height: 1rem
+                height: 4rem
+                width: 4rem
+
+        &-header .close:hover
+            background-color: #ccc
+
     .compaign
         color: #241C15
-    h5
-        font-weight: 500
-        font-size: 36px
+        margin-top: 2rem
+        h5
+            font-weight: 500
+            font-size: 36px
+            font-family: "KansaNew Regular"
+            letter-spacing: -1px
+        p
+            font-size: 13px
+            line-height: 18px
+        .flat-text
+            font-family: "Lato "
+            font-size: 14px
+            font-weight: 600
+            img
+                vertical-align: top
+                margin-top: 1px
+
     .compaign-filter
         margin-top: 2rem
         .search
@@ -22,32 +68,54 @@
                         width: 15px
                     .serch-ico
                         position: absolute
-                        top: 20%
+                        top: 17%
                         left: .5%
                     .search-input
                         padding-left: 1.5rem
                         font-size: 12px
+                        width: 226px
                     .filter
                         border: 1px solid#241C154D
                         font-size: 12px
+                .export-date
+                    color: #37559A
+                    text-transform: uppercase
+                    img
+                        margin-right: .3rem
 
             .request
                 background-color: #37559A
                 border: 1px solid #37559A
-                font-size: 12px
+                font-size: 11px
+                font-weight: 600
+                padding: .6rem 1rem
+                text-transform: uppercase
         .filter-table
             table
+                font-size: 12px
                 thead
                     tr
                         background: #F6F6F4
-                        font-size: 12px
+
                         th
-                            border-bottom: 0
-            .compaign
+                            border-bottom: 1px solid #ccc
+                            border-top: 1px solid #cccccc
+                tbody
+                    tr
+                        td
+                            padding: 34px 12px 22px 10px
+                            .bg-success
+                                background-color: #47AC23!important
+            .compaign-data
                 h6
                     margin-bottom: .2rem
+                    font-family: 'KansaNew Medium'
+                    letter-spacing: .2px
+                .text-sent
+                    color: #241C15A6
+                    font-size: 11px
             span
                 font-weight: normal
-                font-size: 12px
+                font-size: 13px
             .btn.border
                 font-size: 12px

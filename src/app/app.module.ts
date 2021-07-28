@@ -18,6 +18,14 @@ import {
 import { StoreModule } from '@ngrx/store';
 import * as fromUserReducer from "./login/user.reducer"
 import {JwtModule} from "@auth0/angular-jwt"
+import { RouterModule } from '@angular/router';
+import { SingleCompaignComponent } from './single-compaign/single-compaign.component';
+import { DeliveryComponent } from './delivery/delivery.component';
+import { BatchComponent } from './batch/batch.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ModalModule } from 'angular-custom-modal'
+
+
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -28,7 +36,6 @@ const JWT_Module_Options: any = {
       tokenGetter: tokenGetter(),
   }
 };
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +43,11 @@ const JWT_Module_Options: any = {
     SidebarComponent,
     DashboardComponent,
     CompaignComponent,
-    NewCompaignComponent
+    NewCompaignComponent,
+    SingleCompaignComponent,
+    DeliveryComponent,
+    BatchComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +68,9 @@ const JWT_Module_Options: any = {
    StoreModule.forRoot({user: fromUserReducer.reducer}),
     DialogConfigModule.forRoot(), // optional
     ConfirmBoxConfigModule.forRoot(),
-    JwtModule.forRoot({config:JWT_Module_Options})
+    JwtModule.forRoot({config:JWT_Module_Options}),
+    RouterModule,
+    ModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]
