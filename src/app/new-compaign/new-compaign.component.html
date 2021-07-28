@@ -14,38 +14,112 @@
               SEND REQUEST
             </button>
           </div>
-          <h5><a href="">Back to Campaigns name</a></h5>
+          <h5><a href="">Edit Campaign name</a></h5>
         </div>
         <div class="add-compaign">
           <div>
-            <div class="d-flex justify-content-between">
-              <div>
-                <img src="../../assets/images/checkinactive.svg" /> Outlets
+            <div class="border-bottom">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <img
+                    src="../../assets/images/checkinactive.svg"
+                    class="img-check"
+                  /><img
+                    src="../../assets/images/storefront-bold.svg"
+                    class="img-width"
+                  />
+                  Outlets
+                  <p class="text-outlet">
+                    Select which outlet(s) you want to this campaign to target.
+                  </p>
+                </div>
+                <div>
+                  <button
+                    *ngIf="accordianOutletStart == true"
+                    class="btn btn-success btn-done"
+                    (click)="
+                      setaccordianState('outlets');
+                      accordianActive == 'outlets'
+                        ? setaccordianActive('')
+                        : setaccordianActive('outlets')
+                    "
+                  >
+                    Done
+                  </button>
+                  <button
+                    *ngIf="accordianOutletStart == false"
+                    class="btn btn-default btn-outlet"
+                    (click)="
+                      setaccordianState('outlets');
+                      accordianActive == 'outlets'
+                        ? setaccordianActive('')
+                        : setaccordianActive('outlets')
+                    "
+                  >
+                    Edit Outlets
+                  </button>
+                </div>
               </div>
-              <div>
-                <button
-                  class="btn btn-success"
-                  (click)="
-                    setaccordianState('outlets');
-                    accordianActive == 'outlets'
-                      ? setaccordianActive('')
-                      : setaccordianActive('outlets')
-                  "
-                >
-                  {{ accordianOutletStart ? "Done" : "Edit Outlets" }}
-                </button>
+              <div *ngIf="accordianActive == 'outlets'">
+                <div class="outlet-content">
+                  <div>
+                    <button class="btn btn-primary active-btn" type="submit">
+                      All
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary btn-bordr"
+                    >
+                      Al Gharafa
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary btn-bordr"
+                    >
+                      Matar Kadeem
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary btn-bordr"
+                    >
+                      Doha Festival City
+                    </button>
+                  </div>
+                  <div class="mt-2 mb-4">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary btn-bordr"
+                    >
+                      Al Wakra
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary btn-bordr"
+                    >
+                      Souq Waqif
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-            <div *ngIf="accordianActive == 'outlets'">hello</div>
-          </div>
-          <div class="d-flex justify-content-between">
-            <div>
+
+            <div class="d-flex justify-content-between mt-2">
               <div>
-                <img src="../../assets/images/checkinactive.svg" /> Segments
+                <img
+                  src="../../assets/images/checkinactive.svg"
+                  class="img-check"
+                />
+                <img
+                  src="../../assets/images/users-bold.svg"
+                  class="img-width"
+                />Segments
+                <p class="text-segmnt">
+                  Which customers would you like to include in this campaign?
+                </p>
               </div>
               <div *ngIf="accordianSegmentStart == false">
                 <button
-                  class="btn btn-success"
+                  class="btn btn-success btn-outlet"
                   (click)="
                     setaccordianState('segments');
                     accordianActive == 'segments'
@@ -56,17 +130,84 @@
                   {{ !accordianSegmentStart && "Edit Segments" }}
                 </button>
               </div>
-              <div *ngIf="accordianActive == 'segments'">hello</div>
             </div>
-          </div>
-          <div class="d-flex justify-content-between">
-            <div>
+
+            <div *ngIf="accordianActive == 'segments'">
+              <div class="segment">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    All my customers
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Active customers
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Lapsed customers
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Top customers in the last period of time
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Customers by age and country
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="border-bottom pt-3"></div>
+            <div class="d-flex justify-content-between mt-2">
               <div>
-                <img src="../../assets/images/checkinactive.svg" /> Rewards
+                <img
+                  src="../../assets/images/checkinactive.svg"
+                  class="img-check"
+                />
+                <img
+                  src="../../assets/images/gift-bold.svg"
+                  class="img-width"
+                />
+                Rewards
               </div>
               <div *ngIf="accordianRewardsStart == false">
                 <button
-                  class="btn btn-success"
+                  class="btn btn-success btn-outlet"
                   (click)="
                     setaccordianState('rewards');
                     accordianActive == 'rewards'
@@ -77,29 +218,135 @@
                   {{ !accordianRewardsStart && "Edit Rewards" }}
                 </button>
               </div>
-              <div *ngIf="accordianActive == 'rewards'">hello</div>
             </div>
-          </div>
 
-          <div class="d-flex justify-content-between">
-            <div>
-              <img src="../../assets/images/checkinactive.svg" /> Schedule and
-              send
+            <div *ngIf="accordianActive == 'rewards'">
+              <div class="reward">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label"
+                    >Describe the reward for this campaign</label
+                  >
+                  <input
+                    type=""
+                    class="form-control"
+                    id=""
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label"
+                    >When will this reward expire?</label
+                  >
+                  <input
+                    type=""
+                    class="form-control date-select"
+                    placeholder="Select a date"
+                  />
+                  <img
+                    src="../../assets/images/icon-action-calendar.svg"
+                    class="calender"
+                  />
+                </div>
+                <div class="form-floating">
+                  <div class="d-flex justify-content-between">
+                    <p>Message for customers</p>
+                    <p>160 characters</p>
+                  </div>
+                  <textarea
+                    class="form-control"
+                    placeholder="Leave a comment here"
+                    id="floatingTextarea2"
+                    style="height: 100px"
+                  ></textarea>
+                </div>
+              </div>
             </div>
-            <div *ngIf="accordianScheduleStart == false">
-              <button
-                class="btn btn-success"
-                (click)="
-                  setaccordianState('schedule');
-                  accordianActive == 'schedule'
-                    ? setaccordianActive('')
-                    : setaccordianActive('schedule')
-                "
-              >
-                {{ !accordianScheduleStart && "Edit Schedule" }}
-              </button>
+
+            <div class="border-bottom pt-3"></div>
+            <div class="d-flex justify-content-between mt-2">
+              <div>
+                <img
+                  src="../../assets/images/checkinactive.svg"
+                  class="img-check"
+                />
+                <img
+                  src="../../assets/images/paper-plane-tilt-bold.svg"
+                  class="img-width"
+                />
+                Schedule and send
+
+                <div *ngIf="accordianActive == 'schedule'">
+                  <div class="schedule">
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label"
+                        >Describe the reward for this campaign</label
+                      >
+
+                      <input
+                        type=""
+                        class="form-control date-select"
+                        placeholder="Select a date"
+                      />
+                      <img
+                        src="../../assets/images/calendar-blank.svg"
+                        class="calenderblur"
+                      />
+                      <p class="text-alow">
+                        Please allow for at least 3 business days ahead for
+                        Loyaltee to review and send your campaign.
+                      </p>
+                      <p>
+                        We will alert customers that have received a reward in
+                        the app.
+                      </p>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="flexRadioDefault"
+                        id="flexRadioDefault1"
+                      />
+
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        Standard delivery
+                      </label>
+                      <span class="d-block"
+                        >Send notification at a specific time</span
+                      >
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="flexRadioDefault"
+                        id="flexRadioDefault1"
+                      />
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        Intelligent delivery
+                      </label>
+                      <span class="d-block"
+                        >Send notification at the time each customer is most<br />
+                        likely to open the app (Loyaltee’s Intelligence).</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="accordianScheduleStart == false">
+                <button
+                  class="btn btn-success btn-outlet"
+                  (click)="
+                    setaccordianState('schedule');
+                    accordianActive == 'schedule'
+                      ? setaccordianActive('')
+                      : setaccordianActive('schedule')
+                  "
+                >
+                  {{ !accordianScheduleStart && "Edit Schedule" }}
+                </button>
+              </div>
             </div>
-            <div *ngIf="accordianActive == 'schedule'">hello</div>
           </div>
         </div>
       </div>
