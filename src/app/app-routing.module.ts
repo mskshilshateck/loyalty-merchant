@@ -12,6 +12,7 @@ import { SingleCompaignComponent } from './single-compaign/single-compaign.compo
 import { DeliveryComponent } from './delivery/delivery.component';
 import { BatchComponent } from './batch/batch.component';
 import { SettingsComponent } from './settings/settings.component';
+import { NewDliveryBatchComponent } from './new-dlivery-batch/new-dlivery-batch.component';
 const routes: Routes = [
   {
     path: '',
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsComponent,
+  },
+  {
+    path: 'newdeliverybatch',
+    component: NewDliveryBatchComponent,
   },
 ];
 

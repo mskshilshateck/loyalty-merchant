@@ -2,26 +2,65 @@
   <div class="logo"><img src="/assets/images/logo.svg" /></div>
   <div class="d-flex icons" *ngIf="token">
     <div class="logo">
-      <a [routerLink]="['/dashboard']" routerLinkActive="active"
-        ><img src="/assets/images/dashboard.svg"
+      <a
+        [routerLink]="['/dashboard']"
+        routerLinkActive="active"
+        #rla="routerLinkActive"
+        ><img
+          src="{{
+            rla.isActive
+              ? '/assets/images/dash.svg'
+              : '/assets/images/dashboard.svg'
+          }}"
+          [ngClass]="{ activeimg: rla.isActive }"
       /></a>
     </div>
     <div class="logo-promo">
-      <a [routerLink]="['/campaign']" routerLinkActive="active"
-        ><img src="/assets/images/promotion.svg"
+      <a
+        [routerLink]="['/campaign']"
+        routerLinkActive="active"
+        #rla1="routerLinkActive"
+      >
+        <img
+          src="{{
+            rla1.isActive
+              ? '/assets/images/promotion2.svg'
+              : '/assets/images/promotion.svg'
+          }}"
+          [ngClass]="{ activeimg: rla1.isActive }"
       /></a>
     </div>
     <div class="logo">
-      <a [routerLink]="['/delivery']" routerLinkActive="active"
-        ><img src="/assets/images/delivery.svg"
+      <a
+        [routerLink]="['/delivery']"
+        routerLinkActive="active"
+        #rla2="routerLinkActive"
+        ><img
+          src="{{
+            rla2.isActive
+              ? '/assets/images/delivery-bike.svg'
+              : '/assets/images/delivery.svg'
+          }}"
+          [ngClass]="{ activeimg: rla2.isActive }"
       /></a>
     </div>
   </div>
   <div class="bottom-icons" *ngIf="token">
     <div class="d-flex icons">
       <div class="logo">
-        <a [routerLink]="['/settings']" routerLinkActive="active">
-          <img src="/assets/images/setting.svg" />
+        <a
+          [routerLink]="['/settings']"
+          routerLinkActive="active"
+          #rla3="routerLinkActive"
+        >
+          <img
+            src="{{
+              rla3.isActive
+                ? '/assets/images/gearwhite.svg'
+                : '/assets/images/setting.svg'
+            }}"
+            [ngClass]="{ activeimground: rla3.isActive }"
+          />
         </a>
       </div>
       <div class="logo"><img src="/assets/images/logout.svg" /></div>

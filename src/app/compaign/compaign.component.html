@@ -16,13 +16,7 @@
         <div class="border-bottom"></div>
         <div class="compaign-filter">
           <div
-            class="
-              search
-              d-flex
-              justify-content-between
-              align-items-center
-              mb-3
-            "
+            class="search d-flex justify-content-between align-items-center mb-3"
           >
             <div>
               <ul class="mb-0">
@@ -52,7 +46,7 @@
               <button
                 type="button"
                 class="btn btn-primary request"
-                (click)="htmlInsideModal.open()"
+                (click)="onBegin()"
               >
                 REQUEST CAMPAIGN
               </button>
@@ -212,24 +206,5 @@
         </div>
       </div>
     </div>
-    <modal #htmlInsideModal class="campaign-modal">
-      <ng-template #modalHeader
-        ><h4>Request new Campaign</h4>
-        <br />
-      </ng-template>
-      <ng-template #modalBody>
-        <label for="exampleInputEmail1" class="form-label">Campaign Name</label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-        />
-      </ng-template>
-      <ng-template #modalFooter>
-        <button (click)="htmlInsideModal.close()">Cancle</button>
-        <button (click)="onBegin()">Begin</button>
-      </ng-template>
-    </modal>
   </div>
 </div>
