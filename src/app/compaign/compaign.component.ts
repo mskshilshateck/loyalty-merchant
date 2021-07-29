@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router'
 @Component({
   selector: 'app-compaign',
   templateUrl: './compaign.component.html',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class CompaignComponent implements OnInit {
   confirmResult = null;
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
   }
+
+  onBegin(){
+    this.route.navigate(['newcompaign'])
+  }
+
 }

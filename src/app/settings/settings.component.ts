@@ -13,11 +13,18 @@ export class SettingsComponent implements OnInit {
   public email: string ="";
   public mobileNumber: string =""
   public token : any = localStorage.getItem('token')
+  public oldPassword: string = "";
+  public newPassword: string="";
+  public confirmPass: string="";
   public userDetail: any = {}
   constructor(private UserapiService: UserapiService, private CommonService: CommonService) { }
 
   ngOnInit(): void {
     let buttn = document.querySelector('#updateBtn') 
+    let passbtn = document.querySelector('#passwordBtn')
+    passbtn?.addEventListener('click',function(event) {
+      event.preventDefault()
+    })
     buttn?.addEventListener('click', function(event) {
       event.preventDefault();
     });
@@ -32,6 +39,17 @@ export class SettingsComponent implements OnInit {
     }
     this.UserapiService.updateMerchantProfile(this.token,params).subscribe((data) => this.CommonService.toastNotification('Success','Profile Update SuccessFully','Success'),(err) => this.CommonService.toastNotification('Danger',err,'danger'))
   }
+  updateVenderPassword(){
+    if(this.newPassword == this.confirmPass){
+      this.UserapiService.updatePassword(this.token,{
+        'oldPassword': this.oldPassword,
+        'newPassword': this.newPassword
+      }).subscribe((data) => this.CommonService.toastNotification('Success','Password Update SuccessFully','Success'),(err) => this.CommonService.toastNotification('Danger',err,'danger'))
+    }else{
+      this.CommonService.toastNotification('Danger','Confirm Password should match','danger')
+    }
+  }
+
   onChange(name:string,e:any){
     switch (name) {
       case 'firstname':
@@ -46,7 +64,15 @@ export class SettingsComponent implements OnInit {
       case 'mobileNumber':
         this.mobileNumber = e.target.value
         break;
-    
+      case 'oldPassword':
+        this.oldPassword = e.target.value
+        break;
+      case 'newPassword':
+        this.newPassword = e.target.value
+        break;
+      case 'confirmPass':
+        this.confirmPass = e.target.value
+        break;
       default:
         break;
     }

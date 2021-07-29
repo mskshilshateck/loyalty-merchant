@@ -33,4 +33,11 @@ updateMerchantProfile(token:string,body: Object){
   .set('Authorization',token)
   return this.http.put(`${this.apiURL}/Vender/updateProfile`,body,{headers:headers})
 }
+updatePassword(token:string,body: Object){
+  const headers= new HttpHeaders()
+  .set('content-type', 'application/json')
+  .set('Access-Control-Allow-Origin', '*')
+  .set('Authorization',token)
+  return this.http.post(`${this.apiURL}/Vender/changePassword`,body,{headers:headers})
+}
 }

@@ -113,14 +113,15 @@
                 <div class="col-sm-9">
                   <form class="detail">
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label"
+                      <label for="currentpass" class="form-label"
                         >Verify current password</label
                       >
                       <input
-                        type=""
+                        type="password"
                         class="form-control"
-                        id=""
+                        id="currentpass"
                         aria-describedby="emailHelp"
+                        (change)="onChange('oldPassword', $event)"
                       />
                     </div>
                     <div class="mb-3">
@@ -131,17 +132,18 @@
                           align-items-center
                         "
                       >
-                        <label for="exampleInputEmail1" class="form-label"
+                        <label for="newpass" class="form-label"
                           >New password</label
                         >
                         <p>Generate strong password</p>
                       </div>
 
                       <input
-                        type=""
+                        type="password"
                         class="form-control"
-                        id=""
+                        id="newpass"
                         aria-describedby="emailHelp"
+                        (change)="onChange('newPassword', $event)"
                       />
                     </div>
                     <div class="mb-3">
@@ -174,18 +176,24 @@
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label"
+                      <label for="confirm" class="form-label"
                         >Confirm new password</label
                       >
                       <input
-                        type="email"
+                        type="password"
                         class="form-control"
-                        id="exampleInputEmail1"
+                        id="confirm"
                         aria-describedby="emailHelp"
+                        (change)="onChange('confirmPass', $event)"
                       />
                     </div>
 
-                    <button type="submit" class="btn btn-primary update">
+                    <button
+                      type="submit"
+                      id="passwordBtn"
+                      class="btn btn-primary update"
+                      (click)="updateVenderPassword()"
+                    >
                       Update
                     </button>
                   </form>
