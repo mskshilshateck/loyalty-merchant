@@ -27,7 +27,11 @@ import { ModalModule } from 'angular-custom-modal';
 import { CampginRequestComponent } from './campgin-request/campgin-request.component';
 import { BatchRequestComponent } from './batch-request/batch-request.component';
 import { NewDliveryBatchComponent } from './new-dlivery-batch/new-dlivery-batch.component';
-import { BatchGeneratedComponent } from './batch-generated/batch-generated.component'
+import { BatchGeneratedComponent } from './batch-generated/batch-generated.component';
+import { BrandListComponent } from './brand-list/brand-list.component';
+import { BrandOutletsComponent } from './brand-outlets/brand-outlets.component';
+import { NewBrandComponent } from './new-brand/new-brand.component';
+import { NewOutletComponent } from './new-outlet/new-outlet.component'
 
 
 
@@ -56,6 +60,10 @@ const JWT_Module_Options: any = {
     BatchRequestComponent,
     NewDliveryBatchComponent,
     BatchGeneratedComponent,
+    BrandListComponent,
+    BrandOutletsComponent,
+    NewBrandComponent,
+    NewOutletComponent,
   ],
   imports: [
     BrowserModule,

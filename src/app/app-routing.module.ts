@@ -13,6 +13,8 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { BatchComponent } from './batch/batch.component';
 import { SettingsComponent } from './settings/settings.component';
 import { NewDliveryBatchComponent } from './new-dlivery-batch/new-dlivery-batch.component';
+import { BrandListComponent } from './brand-list/brand-list.component';
+import { BrandOutletsComponent } from './brand-outlets/brand-outlets.component';
 const routes: Routes = [
   {
     path: '',
@@ -54,6 +56,14 @@ const routes: Routes = [
   {
     path: 'newdeliverybatch',
     component: NewDliveryBatchComponent,
+  },
+  {
+    path: 'brandlist',
+    component: BrandListComponent,
+  },
+  {
+    path: 'brandoutlets',
+    component: BrandOutletsComponent,
   },
 ];
 
