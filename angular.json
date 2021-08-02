@@ -29,13 +29,10 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "sass",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.sass",
-              "./node_modules/ngx-simple-modal/styles/simple-modal.scss"
+              "./node_modules/bootstrap/scss/bootstrap.scss"
             ],
             "scripts": []
           },
@@ -98,13 +95,8 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "sass",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.sass"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.sass"],
             "scripts": []
           }
         }

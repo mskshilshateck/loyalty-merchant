@@ -23,7 +23,15 @@ import { SingleCompaignComponent } from './single-compaign/single-compaign.compo
 import { DeliveryComponent } from './delivery/delivery.component';
 import { BatchComponent } from './batch/batch.component';
 import { SettingsComponent } from './settings/settings.component';
-import { ModalModule } from 'angular-custom-modal'
+import { ModalModule } from 'angular-custom-modal';
+import { CampginRequestComponent } from './campgin-request/campgin-request.component';
+import { BatchRequestComponent } from './batch-request/batch-request.component';
+import { NewDliveryBatchComponent } from './new-dlivery-batch/new-dlivery-batch.component';
+import { BatchGeneratedComponent } from './batch-generated/batch-generated.component';
+import { BrandListComponent } from './brand-list/brand-list.component';
+import { BrandOutletsComponent } from './brand-outlets/brand-outlets.component';
+import { NewBrandComponent } from './new-brand/new-brand.component';
+import { NewOutletComponent } from './new-outlet/new-outlet.component'
 
 
 
@@ -48,6 +56,14 @@ const JWT_Module_Options: any = {
     DeliveryComponent,
     BatchComponent,
     SettingsComponent,
+    CampginRequestComponent,
+    BatchRequestComponent,
+    NewDliveryBatchComponent,
+    BatchGeneratedComponent,
+    BrandListComponent,
+    BrandOutletsComponent,
+    NewBrandComponent,
+    NewOutletComponent,
   ],
   imports: [
     BrowserModule,

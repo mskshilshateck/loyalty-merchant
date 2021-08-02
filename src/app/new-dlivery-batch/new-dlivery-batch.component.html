@@ -1,0 +1,114 @@
+<div class="container-fluid campaign-container">
+  <div class="row campaign-row">
+    <div class="col-md-1 p-0">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-11">
+      <div class="new-comapign container new-delivery">
+        <h5><a href="">Back to Delivery</a></h5>
+        <div class="compaign-name">
+          <h6>Flat White</h6>
+          <div class="d-flex justify-content-between align-items-center">
+            <h4>Delivery Batch - Flatwhite 23022021</h4>
+            <button
+              type="button"
+              class="btn btn-primary request"
+              (click)="onBegin()"
+            >
+              GENERATE BATCH
+            </button>
+          </div>
+          <h5><a href="">Edit Batch Name</a></h5>
+        </div>
+        <div class="outer-div">
+          <div class="batch-info">
+            <div class="d-flex set-expiration">
+              <img src="../../assets/images/checkinactive.svg" />
+              <div class="set-content">
+                <h4>Set expiration date</h4>
+                <p>How long should this batch remain active?</p>
+              </div>
+            </div>
+            <div class="row form-section">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label"
+                        >From</label
+                      >
+                      <input
+                        type=""
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        placeholder="Select a date"
+                      />
+                      <img
+                        src="../../assets/images/icon-action-calendar.svg"
+                        class="cal-icon"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label"
+                        >To</label
+                      >
+                      <input
+                        type=""
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        placeholder="Select a date"
+                      />
+                      <img
+                        src="../../assets/images/icon-action-calendar.svg"
+                        class="cal2-icon"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="batch-info">
+            <div class="d-flex set-expiration">
+              <img src="../../assets/images/checkinactive.svg" />
+              <div class="set-content">
+                <h4>Set quantity</h4>
+                <p>How many codes do you want to generate in this batch?</p>
+              </div>
+            </div>
+            <div class="row form-section">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-7">
+                    <input
+                      type="range"
+                      class="form-range"
+                      min="0"
+                      max="5"
+                      step="0.5"
+                      id="customRange3"
+                    />
+                    <div class="d-flex justify-content-between text-range">
+                      <p>10</p>
+                      <p>1000</p>
+                    </div>
+                  </div>
+                  <div class="col-md-5">
+                    <input
+                      type=""
+                      class="form-control"
+                      id="exampleInputEmail1"
+                      placeholder="Enter quantity"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
