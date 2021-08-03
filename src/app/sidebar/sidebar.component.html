@@ -30,7 +30,7 @@
           [ngClass]="{ activeimg: rla1.isActive }"
       /></a>
     </div>
-    <div class="logo">
+    <div class="logo2">
       <a
         [routerLink]="['/delivery']"
         routerLinkActive="active"
@@ -63,7 +63,9 @@
           />
         </a>
       </div>
-      <div class="logo"><img src="/assets/images/logout.svg" /></div>
+      <div class="logo logout" (click)="logout()">
+        <img src="/assets/images/logout.svg" />
+      </div>
     </div>
   </div>
 </div>
