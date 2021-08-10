@@ -6,7 +6,7 @@ import { Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class UserapiService {
-  apiURL: string = 'http://ss.stagingsdei.com:9071/api/v1';
+  apiURL: string = 'http://143.198.150.38:9071/api/v1';
   constructor(private http: HttpClient) { }
   handleError(error:any) {
     let errorMessage = '';
