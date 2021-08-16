@@ -1,26 +1,26 @@
 <div class="container-fluid campaign-container">
   <div class="row campaign-row">
-    <div class="col-md-1 p-0">
+    <div class="col-md-1 p-0 leftBar">
       <app-sidebar></app-sidebar>
     </div>
     <div class="col-md-11">
       <div class="new-comapign container">
-        <h5><a href="">Back to Campaigns</a></h5>
+        <h5><a href=""><img src="/assets/images/backIcon.svg" />Back to Campaigns</a></h5>
         <div class="compaign-name">
           <h6>Flat White</h6>
           <div class="d-flex justify-content-between align-items-center">
-            <h4>Kool Café Lapsed Recall</h4>
+            <h4 class="mb-0">Kool Café Lapsed Recall</h4>
             <button type="button" class="btn btn-primary request">
               SEND REQUEST
             </button>
           </div>
-          <h5><a href="">Edit Campaign name</a></h5>
+          <h5 class="mb-4"><a href="">Edit Campaign name</a></h5>
         </div>
         <div class="add-compaign">
           <div>
             <div class="border-bottom">
               <div class="d-flex justify-content-between">
-                <div>
+                <div class="textNew">
                   <img
                     src="../../assets/images/checkinactive.svg"
                     class="img-check"
@@ -104,7 +104,7 @@
             </div>
 
             <div class="d-flex justify-content-between mt-2">
-              <div>
+              <div class="textNew">
                 <img
                   src="../../assets/images/checkinactive.svg"
                   class="img-check"
@@ -194,7 +194,7 @@
 
             <div class="border-bottom pt-3"></div>
             <div class="d-flex justify-content-between mt-2">
-              <div>
+              <div class="textNew">
                 <img
                   src="../../assets/images/checkinactive.svg"
                   class="img-check"
@@ -250,7 +250,7 @@
                 <div class="form-floating">
                   <div class="d-flex justify-content-between">
                     <p>Message for customers</p>
-                    <p>160 characters</p>
+                    <p class="textChar">160 characters</p>
                   </div>
                   <textarea
                     class="form-control"
@@ -264,7 +264,7 @@
 
             <div class="border-bottom pt-3"></div>
             <div class="d-flex justify-content-between mt-2">
-              <div>
+              <div class="textNew">
                 <img
                   src="../../assets/images/checkinactive.svg"
                   class="img-check"
@@ -308,11 +308,11 @@
                         id="flexRadioDefault1"
                       />
 
-                      <label class="form-check-label" for="flexRadioDefault1">
+                      <label class="form-check-label labelText" for="flexRadioDefault1">
                         Standard delivery
                       </label>
                       <span class="d-block"
-                        >Send notification at a specific time</span
+                        >Send notification at a specific time <a href="">Select time</a></span
                       >
                     </div>
                     <div class="form-check">
@@ -322,8 +322,8 @@
                         name="flexRadioDefault"
                         id="flexRadioDefault1"
                       />
-                      <label class="form-check-label" for="flexRadioDefault1">
-                        Intelligent delivery
+                      <label class="form-check-label labelText" for="flexRadioDefault1">
+                        Intelligent delivery<div class="d-inline-block recomend">Recommended</div>
                       </label>
                       <span class="d-block"
                         >Send notification at the time each customer is most<br />

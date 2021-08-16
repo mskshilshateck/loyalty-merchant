@@ -18,6 +18,8 @@
     .compaign
         color: #241C15
         margin-top: 2rem
+        width: 900px
+
         h5
             font-weight: 500
             font-size: 36px
@@ -27,7 +29,7 @@
             font-size: 13px
             line-height: 18px
         .flat-text
-            font-family: "Lato "
+            font-family: "Lato Bold"
             font-size: 14px
             font-weight: 600
             img
@@ -61,13 +63,15 @@
                 .export-date
                     color: #37559A
                     text-transform: uppercase
+                    font-weight: bold
                     img
                         margin-right: .3rem
+                        width: 16px
 
             .request
                 background-color: #37559A
                 border: 1px solid #37559A
-                font-size: 11px
+                font-size: 10px
                 font-weight: 600
                 padding: .6rem 1rem
                 text-transform: uppercase
@@ -84,9 +88,18 @@
                 tbody
                     tr
                         td
-                            padding: 34px 12px 22px 10px
+                            padding: 30px 12px 22px 10px
                             .bg-success
                                 background-color: #47AC23!important
+                            .progress
+                                width: 56%
+                                margin-left: 10px
+                                height: 6px
+                                margin-top: 0.3rem
+                                border-radius: 0
+                                .progress-bar
+                                    width: 40px
+                                    background-color: #47AC23
             .compaign-data
                 h6
                     margin-bottom: .2rem
@@ -100,9 +113,16 @@
                 font-size: 13px
             .btn.border
                 font-size: 12px
+                margin-right: .4rem
+                border-radius: 3px
+                background: #EFEEEA
+                border: 1px solid #EFEEEA!important
+
 .campaign-modal
     .close
         display: none
 .btn
     &:focus
         box-shadow: none
+.leftBar
+    width: 74px

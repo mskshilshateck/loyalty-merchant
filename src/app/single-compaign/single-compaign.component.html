@@ -1,17 +1,21 @@
 <div class="container-fluid campaign-container">
   <div class="row campaign-row">
-    <div class="col-md-1 p-0">
+    <div class="col-md-1 p-0 leftBar">
       <app-sidebar></app-sidebar>
     </div>
     <div class="col-md-11">
       <div class="new-comapign container">
-        <h5><a href="">Back to Campaigns</a></h5>
+        <h5>
+          <a href=""
+            ><img src="/assets/images/backIcon.svg" /> Back to Campaigns</a
+          >
+        </h5>
         <div class="compaign-name">
           <h4>Marketing Campaign Title 01</h4>
         </div>
         <div class="market-compaign">
-          <div class="row">
-            <div class="col-sm-4">
+          <div class="d-flex justify-content-between">
+            <div class="div">
               <div class="edit-comp">
                 <label>Segment:</label>
                 <span class="">Top 20 customers in the last 60 days</span>
@@ -29,7 +33,7 @@
                 <span class="">Apr 11, 2021</span>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="">
               <div class="edit-comp">
                 <label>Sent on:</label>
                 <span class="">Apr 11, 2021</span>
@@ -43,15 +47,15 @@
                 <span class="">Apr 11, 2021</span>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="">
               <div class="export-date">
                 <img src="/assets/images/export.svg" />Export Data
               </div>
             </div>
           </div>
           <div class="progress-div">
-            <div class="row">
-              <div class="col-sm-7">
+            <div class="d-flex justify-content-between">
+              <div class="">
                 <div class="prog-div">
                   <div
                     class="d-flex justify-content-between align-items-center"
@@ -71,7 +75,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-sm-5 d-flex justify-content-center">
+              <div class="d-flex justify-content-center">
                 <button type="button" class="btn btn-primary customer">
                   NUDGE CUSTOMERS
                 </button>
@@ -80,14 +84,20 @@
           </div>
         </div>
         <div class="marketing-table">
-            <div class="table-text">1 - 25 of 1500</div>
+          <div class="table-text">1 - 25 of 1500</div>
           <table class="table">
             <thead>
               <tr>
                 <th scope="col">Customer ID</th>
-                <th scope="col">Age</th>
-                <th scope="col">Nationality</th>
-                <th scope="col">Status</th>
+                <th scope="col">
+                  Age<img src="/assets/images/arrowDown.svg" />
+                </th>
+                <th scope="col">
+                  Nationality<img src="/assets/images/arrowDown.svg" />
+                </th>
+                <th scope="col">
+                  Status<img src="/assets/images/arrowDown.svg" />
+                </th>
                 <th scope="col">Date & Time used</th>
               </tr>
             </thead>

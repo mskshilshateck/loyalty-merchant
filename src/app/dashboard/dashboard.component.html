@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-1 p-0">
+    <div class="col-md-1 p-0 leftBar">
       <app-sidebar></app-sidebar>
     </div>
     <div class="col-md-11">
@@ -8,16 +8,16 @@
         <span class="flat-text"
           >Flat White <img src="/assets/images/arrowdown.svg"
         /></span>
-        <h5 class="mb-4 text-capitalize">
+        <h5 class="mb-5 text-capitalize">
           Welcome {{ userDetail.data.firstName }}
         </h5>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-7">
             <div class="card-block">
               <p class="fw-bold">
                 Here's what happening for the past
-                <a href=""
-                  >30 days <img src="/assets/images/arrowdown.svg" />
+                <a href="" class="bluText"
+                  >30 days <img src="/assets/images/blue-dropdown.svg" />
                 </a>
               </p>
               <div class="row">
@@ -62,13 +62,14 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-5">
             <p class="fw-bold">Smart Insights</p>
             <div class="card-right">
               <p class="fw-bold text-cust">
-                Your customers seem to be visiting more often in January
+                Your customers seem to be visiting<br />
+                more often in January
               </p>
-              <p>
+              <p class="smallText">
                 You had 536 active customers in December, and 621 in January,
                 which means your active customers grew by 15.2%
               </p>
@@ -77,8 +78,8 @@
         </div>
         <div class="border-bottom p-4"></div>
         <div class="insight-graphs mt-4">
-          <h4>Insights</h4>
-          <div class="d-flex justify-content-between align-items-center">
+          <h4 class="">Insights</h4>
+          <div class="d-flex justify-content-between align-items-center mb-2">
             <p>Find out more about your scheme.</p>
             <ul>
               <li><img src="/assets/images/export.svg" />Export Data</li>
@@ -104,7 +105,7 @@
             </ul>
           </div>
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-7">
               <div class="card">
                 <div>
                   <div>
@@ -136,7 +137,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-5">
               <div class="card">
                 <div style="display: block">
                   <canvas
