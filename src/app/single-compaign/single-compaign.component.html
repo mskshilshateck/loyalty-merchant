@@ -5,17 +5,17 @@
     </div>
     <div class="col-md-11">
       <div class="new-comapign container">
-        <h5>
-          <a href=""
+        <h5 class="mb-3">
+          <a (click)="onBack()"
             ><img src="/assets/images/backIcon.svg" /> Back to Campaigns</a
           >
         </h5>
-        <div class="compaign-name">
-          <h4>Marketing Campaign Title 01</h4>
+        <div class="compaign-name" *ngIf="campaignData.campaignName">
+          <h4>{{ campaignData.campaignName }}</h4>
         </div>
-        <div class="market-compaign">
-          <div class="d-flex justify-content-between">
-            <div class="div">
+        <div class="market-compaign" *ngIf="campaignData">
+          <div class="row">
+            <div class="col-md-5">
               <div class="edit-comp">
                 <label>Segment:</label>
                 <span class="">Top 20 customers in the last 60 days</span>
@@ -28,26 +28,66 @@
                 <label>Reward:</label>
                 <span class="">3 cookies</span>
               </div>
-              <div class="edit-comp">
+              <div
+                class="edit-comp"
+                *ngIf="campaignData.campaginStatus != 'Rejected'"
+              >
                 <label>Requested on:</label>
-                <span class="">Apr 11, 2021</span>
+                <span class="">{{
+                  campaignData.createdAt | date: "mediumDate"
+                }}</span>
               </div>
             </div>
-            <div class="">
-              <div class="edit-comp">
+            <div class="col-md-4">
+              <div
+                class="edit-comp"
+                *ngIf="
+                  campaignData.campaginStatus != 'Scheduled' &&
+                  campaignData.campaginStatus != 'Requested'
+                "
+              >
                 <label>Sent on:</label>
+                <span class="">Apr 11, 2021</span>
+              </div>
+              <div
+                class="edit-comp"
+                *ngIf="
+                  campaignData.campaginStatus == 'Scheduled' ||
+                  campaignData.campaginStatus == 'Requested'
+                "
+              >
+                <label>Scheduled on:</label>
                 <span class="">Apr 11, 2021</span>
               </div>
               <div class="edit-comp">
                 <label>Status:</label>
-                <span class="badge bg-success activeStatus">Active</span>
+                <span
+                  [ngClass]="
+                    campaignData && campaignData.campaginStatus == 'Active'
+                      ? 'active'
+                      : campaignData &&
+                        campaignData.campaginStatus == 'Rejected'
+                      ? 'rejected'
+                      : campaignData &&
+                        campaignData.campaginStatus == 'Schedule'
+                      ? 'schedule'
+                      : 'requested'
+                  "
+                  >{{ campaignData.campaginStatus }}</span
+                >
               </div>
-              <div class="edit-comp">
+              <div
+                class="edit-comp"
+                *ngIf="
+                  campaignData.campaginStatus != 'Scheduled' &&
+                  campaignData.campaginStatus != 'Requested'
+                "
+              >
                 <label>Expires on:</label>
                 <span class="">Apr 11, 2021</span>
               </div>
             </div>
-            <div class="">
+            <div class="col-md-3">
               <div class="export-date">
                 <img src="/assets/images/export.svg" />Export Data
               </div>
@@ -83,7 +123,13 @@
             </div>
           </div>
         </div>
-        <div class="marketing-table">
+        <div
+          class="marketing-table"
+          *ngIf="
+            campaignData.campaginStatus != 'Scheduled' &&
+            campaignData.campaginStatus != 'Requested'
+          "
+        >
           <div class="table-text">1 - 25 of 1500</div>
           <table class="table">
             <thead>
@@ -107,7 +153,7 @@
 
                 <td>18</td>
                 <td>Qatar</td>
-                <td><span class="badge bg-success">used</span></td>
+                <td><span class="badge bg-success">Used</span></td>
                 <td>Apr 11, 2021 8:23pm</td>
               </tr>
               <tr>
@@ -115,7 +161,7 @@
 
                 <td>18</td>
                 <td>Qatar</td>
-                <td><span class="badge bg-success">used</span></td>
+                <td><span class="badge bg-success">Used</span></td>
                 <td>Apr 11, 2021 8:23pm</td>
               </tr>
               <tr>
@@ -123,7 +169,7 @@
 
                 <td>18</td>
                 <td>Qatar</td>
-                <td><span class="badge bg-success">used</span></td>
+                <td><span class="badge bg-success">Used</span></td>
                 <td>Apr 11, 2021 8:23pm</td>
               </tr>
               <tr>
@@ -131,7 +177,7 @@
 
                 <td>18</td>
                 <td>Qatar</td>
-                <td><span class="badge bg-success">used</span></td>
+                <td><span class="badge bg-success">Used</span></td>
                 <td>Apr 11, 2021 8:23pm</td>
               </tr>
               <tr>
@@ -139,7 +185,7 @@
 
                 <td>18</td>
                 <td>Qatar</td>
-                <td><span class="badge bg-success">used</span></td>
+                <td><span class="badge bg-success">Used</span></td>
                 <td>Apr 11, 2021 8:23pm</td>
               </tr>
               <tr>
@@ -147,7 +193,7 @@
 
                 <td>18</td>
                 <td>Qatar</td>
-                <td><span class="badge bg-success">used</span></td>
+                <td><span class="badge bg-success">Used</span></td>
                 <td>Apr 11, 2021 8:23pm</td>
               </tr>
               <tr>
@@ -155,7 +201,7 @@
 
                 <td>18</td>
                 <td>Qatar</td>
-                <td><span class="badge bg-success">used</span></td>
+                <td><span class="badge bg-success">Used</span></td>
                 <td>Apr 11, 2021 8:23pm</td>
               </tr>
             </tbody>

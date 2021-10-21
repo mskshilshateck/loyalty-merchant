@@ -1,3 +1,4 @@
+
 .dashboard
     color: #241C15
     width: 900px
@@ -6,23 +7,137 @@
         font-weight: 500
         font-size: 36px
         font-family: 'KansaNew Regular'
+    h6
+        font-weight: 500
+        font-size: 16px
+        font-family: 'KansaNew Regular'
+    .heading-incard
+        font-weight: 500
+        font-size: 20px
+        font-family: 'KansaNew Regular'
+        margin-top: 2rem
+        margin-bottom: 2rem
 
-    .card-block
-        p
-            font-family: "Lato Bold"
-        .card
-            background: #F6F6F4
-            border: 1px solid #241C1526
-            .card-body
-                .card-title
-                    font-size: 50px
-                .card-subtitle
-                    color: #241C15
-                    font-family: "Lato bold"
-                .card-text.text-success
-                    color: #47AC23!important
-                .card-text.text-danger
-                    color: #F25022!important
+    .card
+        background: #fff
+        border: 1px solid #241C1526
+        .card-body
+            .card-title
+                font-size: 50px
+            .card-subtitle
+                color: #241C15
+                font-family: "Lato bold"
+            .card-text.text-success
+                color: #47AC23!important
+            .card-text.text-danger
+                color: #F25022!important
+            .tabs-container
+                .nav
+                    width: 800px
+                    .nav-link
+                        border: 1px solid #241C154D !important
+                        color: #383A3A
+                        margin-right: .5rem
+                        border-radius: 2px
+                        width: 200px
+                        text-align: center
+                    .nav-link.active
+                        background-color: #37559A !important
+                        color: #fff
+                        border-radius: 2px
+                        font-family: "lato"
+                .pricing-box
+                    display: flex
+                    flex-direction: column
+                    // align-items: center
+                    justify-content: center
+                    margin-top: 4rem
+                    margin-left: 2rem
+                    border: 1px solid #eeee
+                    padding: 2rem
+                    .brand-content-part
+                        display: flex
+                        flex-direction: row
+                        justify-content: space-between
+                        label
+                            margin-bottom: 1rem
+                            font-size: 14px
+                            margin-top: .3rem
+                        .form-control
+                            width: 60%
+                            margin-bottom: 1rem
+                        .document
+                            margin-top: 1rem
+                        .empty-field
+                            width: 100%
+                            border: 1px solid #d3d3d3ee
+                            height: 40px
+                        .zip
+                            margin-top: 1rem
+                            width: 60%
+                            border: 1px solid #d3d3d3ee
+                        .upload-btn
+                            width: 70px
+                            height: 40px
+                            margin-left: 1rem
+                            margin-top: 1rem
+                            background-color: #fff
+                            color: #37559A
+                            border: 1px solid #37559A
+                        .fileinput
+                            margin-top: 1rem
+                            border: 1px solid #d3d3d3ee
+                            height: 40px
+
+                        select
+                            height: 39px
+                            margin-top: 1rem
+                            margin-right: 1rem
+                            border: 1px solid #d3d3d3ee
+                            font-size: 14px
+
+                    h6
+                        color: #383A3A
+                    .text-container
+                        display: flex
+                        flex-direction: row
+                        justify-content: space-between
+                        p
+                            font-family: "lato"
+                            color: #241C15
+                            font-size: 12px
+                        h6
+                            font-family: "kansaNew Regular"
+                            font-size: 22px
+                    button
+                        margin-top: 2rem
+                        width: 100%
+                        border: none
+                        color: #fff
+                        background-color: #37559A
+                        height: 40px
+                        font-family: "lato"
+                        font-size: 12px
+                        text-transform: "capitalize"
+                    .btn-brand
+                        text-align: end
+                        button
+                            margin-top: 2rem
+                            width: 50%
+                            border: none
+                            color: #fff
+                            background-color: #37559A
+                            height: 40px
+                            font-family: "lato"
+                            font-size: 12px
+                            text-transform: "capitalize"
+
+            // .inner-container
+            //     margin-top: 4rem!important
+            //     position: relative
+            //     width: 900px
+            //     margin: 0px auto
+            //     background-color: #000
 
     .card-right
         border: 1px solid #241C1526
@@ -40,7 +155,7 @@
             font-size: 30px
         p
             font-size: 13px
-          
+
         ul
             li
                 list-style: none
@@ -57,7 +172,6 @@
                     font-weight: "Lato"
                 &:nth-child(2)
                     color: #241C15A6
-                    
 
                 .btn.border
                     font-size: 11px

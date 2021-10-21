@@ -3,7 +3,7 @@
     <div class="col-md-1 p-0 leftBar">
       <app-sidebar></app-sidebar>
     </div>
-    <div class="col-md-11">
+    <div class="col-md-11" *ngIf="!firstTimeLogin">
       <div class="dashboard container mt-4">
         <span class="flat-text"
           >Flat White <img src="/assets/images/arrowdown.svg"
@@ -191,6 +191,539 @@
               </div>
             </div>
           </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-11" *ngIf="firstTimeLogin">
+      <div class="dashboard container mt-4">
+        <h6 class="mb-5 text-capitalize">
+          Please Choose The Subscription Plans Below To Move Ahead & Add Your
+          Businesses.
+        </h6>
+        <div class="row inner-container">
+          <div class="card">
+            <div class="card-body">
+              <div class="tabs-container">
+                <nav ngbNav #nav="ngbNav" class="nav-tabs">
+                  <ng-container ngbNavItem>
+                    <a ngbNavLink>PLANS</a>
+                    <ng-template ngbNavContent>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <h6 class="text-capitalize heading-incard">
+                            Best Pricing Plans
+                          </h6>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault1"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault1"
+                            >
+                              Plan 1 - 1 Month Free Trial
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault2"
+                              checked
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault2"
+                            >
+                              Plan 2 - 3 Month - Start From 130 QAR Per Month
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault2"
+                              checked
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault2"
+                            >
+                              Plan 3 - 6 Month - 10% Discount Start From 117 QAR
+                              Per Month
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault2"
+                              checked
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault2"
+                            >
+                              Plan 4 - 12 Month - 15% Discount Start From 111
+                              QAR Per Month
+                            </label>
+                          </div>
+                          <h6 class="text-capitalize heading-incard">
+                            Best Features Plans
+                          </h6>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault1"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault1"
+                            >
+                              Plan 1 - 1 Month Free Trial
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault2"
+                              checked
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault2"
+                            >
+                              Plan 2 - 3 Month - Start From 130 QAR Per Month
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault2"
+                              checked
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault2"
+                            >
+                              Plan 3 - 6 Month - 10% Discount Start From 117 QAR
+                              Per Month
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault2"
+                              checked
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault2"
+                            >
+                              Plan 4 - 12 Month - 15% Discount Start From 111
+                              QAR Per Month
+                            </label>
+                          </div>
+                          <h6 class="text-capitalize heading-incard">
+                            Best Addition Pricing
+                          </h6>
+                          <div class="form-check branch-select">
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault1"
+                            >
+                              # Of Branches (Up To 99 Only)
+                            </label>
+                            <select
+                              style="
+                                margin-left: 3rem;
+                                padding: 0.2rem;
+                                border: 1px solid #eeee;
+                              "
+                            >
+                              <option>01</option>
+                              <option>02</option>
+                              <option>03</option>
+                              <option>04</option>
+                            </select>
+                            <h6 class="text-capitalize heading-incard">
+                              Best Pricing Plans
+                            </h6>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="flexRadioDefault"
+                                id="flexRadioDefault1"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="flexRadioDefault1"
+                              >
+                                One Branch - Free, Added In Base Pricing
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="flexRadioDefault"
+                                id="flexRadioDefault2"
+                                checked
+                              />
+                              <label
+                                class="form-check-label"
+                                for="flexRadioDefault2"
+                              >
+                                Up To 2 -3 Branches - QAR 1000 Per Additional
+                                Branch
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="flexRadioDefault"
+                                id="flexRadioDefault2"
+                                checked
+                              />
+                              <label
+                                class="form-check-label"
+                                for="flexRadioDefault2"
+                              >
+                                Up To 4 -6 Branches - QAR 850 Per Additional
+                                Branch
+                              </label>
+                            </div>
+
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="flexRadioDefault"
+                                id="flexRadioDefault2"
+                                checked
+                              />
+                              <label
+                                class="form-check-label"
+                                for="flexRadioDefault2"
+                              >
+                                11+ Branches - QAR 350 Per Additional Branch
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="pricing-box">
+                            <h6>Invoice Summary</h6>
+                            <div class="text-container">
+                              <p>Plans</p>
+                              <p>Pricing</p>
+                            </div>
+                            <div class="text-container">
+                              <p>Plan 3</p>
+                              <p>QAR 780.00</p>
+                            </div>
+                            <h6>Addon Features</h6>
+                            <div class="text-container">
+                              <p>Insights</p>
+                              <p>QAR 240.00</p>
+                            </div>
+                            <div class="text-container">
+                              <p>Campaigns</p>
+                              <p>QAR 240.00</p>
+                            </div>
+                            <div class="text-container">
+                              <h6>Subtotal</h6>
+                              <p>QAR 1260.00</p>
+                            </div>
+                            <div class="text-container">
+                              <p>Subtotal After Discount</p>
+                              <p>QAR 1134.00</p>
+                            </div>
+                            <div class="text-container">
+                              <p>Branch Pricing</p>
+                              <p>QAR 4550.00</p>
+                            </div>
+                            <div class="text-container">
+                              <h6>Total (QAR)</h6>
+                              <p>QAR 5684.00</p>
+                            </div>
+                            <button class="btn-payment text-capitalize">
+                              CONFIRM & NEXT
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </ng-container>
+                  <ng-container ngbNavItem>
+                    <a ngbNavLink>BUSINESS DETAILS</a>
+                    <ng-template ngbNavContent>
+                      <div class="row">
+                        <div class="col-md-7">
+                          <div class="pricing-box">
+                            <div class="brand-content-part">
+                              <label
+                                for="exampleInputEmail1"
+                                class="form-label"
+                              >
+                                Branch Name:</label
+                              >
+
+                              <input
+                                type=""
+                                class="form-control"
+                                id="exampleInputEmail1"
+                                aria-describedby="emailHelp"
+                                placeholder="Branch name"
+                              />
+                            </div>
+                            <div class="brand-content-part">
+                              <label
+                                for="exampleInputEmail1"
+                                class="form-label"
+                              >
+                                Branch Address :</label
+                              >
+
+                              <input
+                                type=""
+                                class="form-control"
+                                id="exampleInputEmail1"
+                                aria-describedby="emailHelp"
+                                placeholder="Fill Business Full Legal Address Here"
+                              />
+                            </div>
+                            <div class="brand-content-part">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="exampleInputEmail1"
+                                aria-describedby="emailHelp"
+                                class="empty-field"
+                              />
+                            </div>
+                            <div class="brand-content-part">
+                              <select>
+                                <option>Select City</option>
+                              </select>
+                              <select>
+                                <option>Select State</option>
+                              </select>
+                              <input
+                                type=""
+                                class="form-control"
+                                id="exampleInputEmail1"
+                                aria-describedby="emailHelp"
+                                placeholder="zip code"
+                                class="zip"
+                              />
+                            </div>
+                            <div class="brand-content-part">
+                              <!-- <div
+                                style="
+                                  display: flex;
+                                  flex-direction: row;
+                                "
+                              > -->
+                              <label
+                                for="exampleInputEmail1"
+                                class="form-label document"
+                              >
+                                Business Documents:</label
+                              >
+                              <input
+                                class="form-control form-control-sm"
+                                id="document"
+                                class="fileinput"
+                              />
+                              <button
+                                class="
+                                  btn btn-outline-dark btn-begin
+                                  upload-btn
+                                "
+                                for="document"
+                              >
+                                Browse
+                              </button>
+                            </div>
+                            <div class="brand-content-part">
+                              <!-- <div
+                                style="
+                                  display: flex;
+                                  flex-direction: row;
+                                "
+                              > -->
+                              <label
+                                for="exampleInputEmail1"
+                                class="form-label document"
+                              >
+                                Business Logo:</label
+                              >
+                              <input
+                                class="form-control form-control-sm"
+                                id="document"
+                                class="fileinput"
+                              />
+                              <button
+                                class="
+                                  btn btn-outline-dark btn-begin
+                                  upload-btn
+                                "
+                                for="document"
+                              >
+                                Browse
+                              </button>
+                            </div>
+                            <!-- </div> -->
+                            <div class="btn-brand">
+                              <button class="text-capitalize">
+                                SEND FOR VERIFICATION
+                              </button>
+                            </div>
+                          </div>
+                          <div style="text-align: end; margin-top: 1rem">
+                            <button
+                              style="
+                                background-color: #37559a;
+                                color: #fff;
+                                border: none;
+                                height: 40px;
+                                width: 40%;
+                              "
+                            >
+                              Add More brands
+                            </button>
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="pricing-box">
+                            <h6>Invoice Summary</h6>
+                            <div class="text-container">
+                              <p>Plans</p>
+                              <p>Pricing</p>
+                            </div>
+                            <div class="text-container">
+                              <p>Plan 3</p>
+                              <p>QAR 780.00</p>
+                            </div>
+                            <h6>Addon Features</h6>
+                            <div class="text-container">
+                              <p>Insights</p>
+                              <p>QAR 240.00</p>
+                            </div>
+                            <div class="text-container">
+                              <p>Campaigns</p>
+                              <p>QAR 240.00</p>
+                            </div>
+                            <div class="text-container">
+                              <h6>Subtotal</h6>
+                              <p>QAR 1260.00</p>
+                            </div>
+                            <div class="text-container">
+                              <p>Subtotal After Discount</p>
+                              <p>QAR 1134.00</p>
+                            </div>
+                            <div class="text-container">
+                              <p>Branch Pricing</p>
+                              <p>QAR 4550.00</p>
+                            </div>
+                            <div class="text-container">
+                              <h6>Total (QAR)</h6>
+                              <p>QAR 5684.00</p>
+                            </div>
+                            <button class="btn-payment text-capitalize">
+                              CONFIRM & NEXT
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </ng-container>
+                  <ng-container ngbNavItem>
+                    <a ngbNavLink>INVOICES/PAYMENTS</a>
+                    <ng-template ngbNavContent>
+                      <div class="row">
+                        <div class="col-md-7">
+                          <div class="pricing-box">
+                            <p>
+                              Thanks for submitting business details, your added
+                              details are in review with the admin end.
+                            </p>
+                            <p>
+                              Once details are being verified and approved by
+                              the admin, The make payment button will be enabled
+                              on the invoice summary box, please make payment to
+                              use the system with full details.
+                            </p>
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="pricing-box">
+                            <h6>Invoice Summary</h6>
+                            <div class="text-container">
+                              <p>Plans</p>
+                              <p>Pricing</p>
+                            </div>
+                            <div class="text-container">
+                              <p>Plan 3</p>
+                              <p>QAR 780.00</p>
+                            </div>
+                            <h6>Addon Features</h6>
+                            <div class="text-container">
+                              <p>Insights</p>
+                              <p>QAR 240.00</p>
+                            </div>
+                            <div class="text-container">
+                              <p>Campaigns</p>
+                              <p>QAR 240.00</p>
+                            </div>
+                            <div class="text-container">
+                              <h6>Subtotal</h6>
+                              <p>QAR 1260.00</p>
+                            </div>
+                            <div class="text-container">
+                              <p>Subtotal After Discount</p>
+                              <p>QAR 1134.00</p>
+                            </div>
+                            <div class="text-container">
+                              <p>Branch Pricing</p>
+                              <p>QAR 4550.00</p>
+                            </div>
+                            <div class="text-container">
+                              <h6>Total (QAR)</h6>
+                              <p>QAR 5684.00</p>
+                            </div>
+                            <button class="btn-payment text-capitalize">
+                              Make Payment
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </ng-container>
+                </nav>
+
+                <div [ngbNavOutlet]="nav" class="mt-2"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

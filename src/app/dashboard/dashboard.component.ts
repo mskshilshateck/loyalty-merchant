@@ -102,6 +102,9 @@ export class DashboardComponent implements OnInit {
       backgroundColor:"#D82C4F"
     },
   ]
+
+  firstTimeLogin: boolean = true;
+  active = 1;
   constructor(private store: Store,private userservice: UserapiService) { }
   ngOnInit(): void {
     let token = localStorage.getItem('token') || ""
@@ -112,11 +115,9 @@ export class DashboardComponent implements OnInit {
   // this.store.select(state => state).subscribe(data => this.userDetail = data)
   }
   public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
   }
 
   public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
   }
 
   public randomize(): void {

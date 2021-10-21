@@ -15,10 +15,23 @@ import { SettingsComponent } from './settings/settings.component';
 import { NewDliveryBatchComponent } from './new-dlivery-batch/new-dlivery-batch.component';
 import { BrandListComponent } from './brand-list/brand-list.component';
 import { BrandOutletsComponent } from './brand-outlets/brand-outlets.component';
+import { RegisterComponent } from './register/register.component';
+import { NewBrandComponent } from './new-brand/new-brand.component';
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo: 'login'
+    
+  },
+  {
+    path: 'login',
     component: LoginComponent
+    
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
     
   },
   {
@@ -65,6 +78,10 @@ const routes: Routes = [
     path: 'brandoutlets',
     component: BrandOutletsComponent,
   },
+  {
+    path: 'add-brand',
+    component: NewBrandComponent
+  }
 ];
 
 @NgModule({

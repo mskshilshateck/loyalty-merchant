@@ -1,42 +1,167 @@
-.modal-header
-    flex-direction: column
-    justify-content: flex-start
-    align-items: flex-start
-    border-bottom: 0
-    .modal-title
-        text-align: left
-        font-family: "KansaNew Medium"
-    p
-        font-size: 12px
-        word-break: break-all
-        width: 349px
-        margin-top: .6rem
-.modal-body
-    .content-part
-        label
-            font-size: 12px
-            font-weight: bold
-        span
-            color: #241C15A6
-            font-size: 12px
-    .form-control
-        &:focus
+.campaign-container
+    height: 100vh
+    .campaign-row
+        height: 100%
 
-            outline: none
-            border: 1px solid #ccc
-            box-shadow: none
+        .campaign-modal
+            transition: opacity 0.2s ease-in
+            background: red
+            .modal.in
+                background: red !important
+                .modal-content
+                    background: #000 !important
+                    .modal-header
+                        background: #000 !important
+                        button
+                            display: none
 
-.modal-footer
-    border-top: 0
+    .compaign
+        color: #241C15
+        margin-top: 2rem
+        width: 900px
+        .brands-list
+            width: 50%
+            overflow-y: scroll
+            height: 50px
+            display: flex
+            flex-direction: row
+            .select
+                background-color: #37559A
+                color: #fff
+                border: none
+                width: 80px
+                height: 30px
+                text-transform: capitalize
+                font-family: 'lato'
+            .non-select
+                background-color: #fff
+                color: #37559A
+                border: 1px solid #37559A
+                width: 80px
+                height: 30px
+                text-transform: capitalize
+                font-family: 'lato'
+            .brand
+                margin-left: 1rem
 
-    .btn-begin
-        background: #37559A
-        color: #ffffff
-        font-size: 11px
-        text-transform: uppercase
-        border: 0
-        width: 50px
-        height: 33px
+        h5
+            font-weight: 500
+            font-size: 36px
+            font-family: "KansaNew Regular"
+            letter-spacing: -0.72px
+        p
+            font-size: 13px
+            line-height: 18px
+        .flat-text
+            font-family: "Lato Bold"
+            font-size: 14px
+            font-weight: 600
+            img
+                vertical-align: top
+                margin-top: 1px
+
+    .compaign-filter
+        margin-top: 2rem
+        .search
+            position: relative
+            ul
+                padding-left: 0
+                li
+                    list-style: none
+                    display: inline-block
+                    margin-right: 1rem
+                    font-size: 12px
+                    img
+                        width: 18px
+                        vertical-align: sub
+                    .serch-ico
+                        position: absolute
+                        top: 24%
+                        left: 8px
+                    .search-input
+                        padding-left: 1.9rem
+                        font-size: 13px
+                        width: 226px
+                    .filter
+                        border: 1px solid#241C154D
+                        font-size: 13px
+                .export-date
+                    color: #37559A
+                    text-transform: uppercase
+                    font-weight: bold
+                    img
+                        margin-right: .3rem
+                        width: 16px
+
+            .request
+                background-color: #37559A
+                border: 1px solid #37559A
+                font-size: 10px
+                font-weight: 600
+                padding: .6rem 1rem
+                text-transform: uppercase
+            .filter-header
+                font-family: 'kansaNew Regular'
+        .filter-table
+            table
+                font-size: 12px
+                thead
+                    tr
+                        background: #F6F6F4
+
+                        th
+                            border-bottom: 1px solid #ccc
+                            border-top: 1px solid #cccccc
+                            vertical-align: middle
+                tbody
+                    tr
+                        td
+                            padding: 30px 12px 22px 10px
+                            .bg-success
+                                background-color: #47AC23!important
+                            .bg-rejected
+                                background-color: #f25022!important
+                            .bg-scheduled
+                                background-color: #caeebd!important
+                                color: #212529!important
+                            .bg-expired
+                                background-color: #f6f6f4!important
+                                color: #ceccc9!important
+                            .bg-requested
+                                background-color: #f6f6f4!important
+                                color: #212529!important
+                            .progress
+                                width: 56%
+                                margin-left: 10px
+                                height: 6px
+                                margin-top: 0.3rem
+                                border-radius: 0
+                                .progress-bar
+                                    width: 40px
+                                    background-color: #47AC23
+            .compaign-data
+                h6
+                    margin-bottom: .2rem
+                    font-family: 'KansaNew Medium'
+                    letter-spacing: .2px
+                .text-sent
+                    color: #241C15A6
+                    font-size: 11px
+            span
+                font-weight: normal
+                font-size: 13px
+            .btn.border
+                font-size: 12px
+                margin-right: .4rem
+                border-radius: 3px
+                background: #EFEEEA
+                border: 1px solid #EFEEEA!important
+
+.campaign-modal
+    .close
+        display: none
 .btn
     &:focus
         box-shadow: none
+.leftBar
+    width: 74px

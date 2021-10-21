@@ -32,7 +32,10 @@ import { BrandListComponent } from './brand-list/brand-list.component';
 import { BrandOutletsComponent } from './brand-outlets/brand-outlets.component';
 import { NewBrandComponent } from './new-brand/new-brand.component';
 import { NewOutletComponent } from './new-outlet/new-outlet.component'
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
+import { BrandRequestComponent } from './brand-request/brand-request.component';
 
 
 export function tokenGetter() {
@@ -64,9 +67,13 @@ const JWT_Module_Options: any = {
     BrandOutletsComponent,
     NewBrandComponent,
     NewOutletComponent,
+    RegisterComponent,
+    BrandRequestComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    NgbModule,
     AppRoutingModule,
     ChartsModule,
     HttpClientModule,

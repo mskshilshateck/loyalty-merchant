@@ -11,7 +11,10 @@
           <div class="col-md-5">
             <form class="form-div">
               <h4>Log In</h4>
-              <p>Don't have an account? <a href="">Sign Up</a></p>
+              <p>
+                Don't have an account?
+                <a [routerLink]="['/register']">Sign up</a>
+              </p>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label"
                   >Username</label
@@ -44,13 +47,13 @@
                   (change)="onChangePassword($event)"
                 />
               </div>
-              <button
+              <label
                 class="btn btn-primary login-btn"
                 id="loginBtn"
                 (click)="LoginMerchant()"
               >
                 Log in
-              </button>
+              </label>
               <div
                 class="d-flex justify-content-between align-items-center mt-1"
               >

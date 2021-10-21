@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   public email: string ="";
   public password: string ="";
   userDetail: any = {};
-  constructor(private UserService: UserapiService, private CommonService: CommonService,private store: Store,private router: Router) { 
+  constructor(private UserService: UserapiService, private CommonService: CommonService, private store: Store,private router: Router) { 
     this.userDetail = this.store.select(state => state).subscribe(data => data)
     
   }
@@ -25,14 +25,13 @@ export class LoginComponent implements OnInit {
     buttn?.addEventListener('click', function(event) {
       event.preventDefault();
     });
-    console.log(this.userDetail,"storeuser detaul")
   }
   LoginMerchant(): void{
     let params = {email:this.email,password:this.password}
     this.UserService.loginMerchant(params).pipe(catchError(this.UserService.handleError)).subscribe(data => {
       this.CommonService.toastNotification('Success',data.body.message,'Success')
       localStorage.setItem('token',data.body.data.accessToken)
-      this.router.navigate(['dashboard'])
+      this.router.navigate(['/add-brand'])
     },(err) => this.CommonService.toastNotification('Error',err,'Danger'))
   }
   onChangeEmail(e:any){

@@ -5,21 +5,24 @@
     <span aria-hidden="true">&times;</span>
   </button> -->
 </div>
-<div class="modal-body">
-  <div class="d-flex justify-content-between align-items-center content-part">
-    <label for="exampleInputEmail1" class="form-label">Campaign Name</label>
-    <span class="">100 characters</span>
+<form #campaignForm="ngForm" (ngSubmit)="campaignForm.form.valid && onBegin(campaignForm)" novalidate>
+  
+  <div class="modal-body">
+    
+    <div class="d-flex justify-content-between align-items-center content-part">
+      <label for="exampleInputEmail1" class="form-label">Campaign Name</label>
+      <span class="">100 characters</span>
     </div>
-    <input
-      type=""
-      class="form-control"
-      id="exampleInputEmail1"
-      aria-describedby="emailHelp"
-    />
-   
+    <input type="text" #nameRef="ngModel" class="form-control" name="campaignName" ngModel required/>
+    <div *ngIf="campaignForm.submitted && nameRef.invalid" class="invalid-feedback">
+      <div>Campaign Name is required</div>
+    </div>
+    
+  </div>
 
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-outline-primary btn-cancel">Cancel</button>
-  <button type="button" class="btn btn-outline-dark btn-begin" (click)="onBegin()">Begin</button>
-</div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary btn-cancel" (click)="close()">Cancel</button>
+    <button type="submit" class="btn btn-outline-dark btn-begin">Begin</button>
+  </div>
+
+</form>

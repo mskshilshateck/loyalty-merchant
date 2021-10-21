@@ -1,0 +1,61 @@
+<div class="container-fluid campaign-container">
+    <div class="row">
+      
+        <div class="dashboard container mt-4">
+          <div class="card">
+            <h4>Add Your Business Here</h4>
+            <div class="card-body">
+              <div class="content-part">
+                <label for="exampleInputEmail1" class="form-label">
+                  Your Business Name/Brand Name (Legal Name)</label
+                >
+  
+                <input
+                  type=""
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Business Name/Brand Name "
+                />
+              </div>
+              <div class="content-part">
+                <label for="exampleInputEmail1" class="form-label">
+                  Upload Business Documents:</label
+                >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                  "
+                >
+                  <input
+                    class="form-control form-control-sm"
+                    id="document"
+                    type="file"
+                  />
+                  <button
+                    class="btn btn-outline-dark btn-begin upload-btn"
+                    for="document"
+                    (click)="onfilechange()"
+                  >
+                    Browse
+                  </button>
+                </div>
+              </div>
+              <div class="btn-container">
+                <button
+                  type="button"
+                  class="btn btn-outline-dark btn-begin"
+                  (click)="onAdd()"
+                >
+                  ADD
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  

@@ -1,0 +1,115 @@
+<div class="container-fluid campaign-container">
+  <div class="row campaign-row">
+    <div class="col-md-1 p-0">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-11">
+      <div class="login-form">
+        <div
+          class="row d-flex justify-content-center align-items-center row-div"
+        >
+          <div class="col-md-5" *ngIf="!isOtp">
+            <form class="form-div">
+              <h4>Register to your merchant account</h4>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Your Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  (value)="(name)"
+                  aria-describedby="emailHelp"
+                  (change)="onChangeName($event)"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Email ID</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  (value)="(email)"
+                  aria-describedby="emailHelp"
+                  (change)="onChangeEmail($event)"
+                />
+              </div>
+              <div class="mb-3">
+                <div
+                  class="d-flex justify-content-between align-items-center pwd"
+                >
+                  <label for="exampleInputPassword1" class="form-label"
+                    >Password</label
+                  >
+                  <div>
+                    <h6><img src="/assets/images/eye.svg" /> Show</h6>
+                  </div>
+                </div>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  (value)="(password)"
+                  (change)="onChangePassword($event)"
+                />
+              </div>
+              <button
+                class="btn btn-primary login-btn"
+                id="loginBtn"
+                (click)="SignupMerchant()"
+              >
+                SIGN UP
+              </button>
+              <div
+                class="d-flex justify-content-between align-items-center mt-1"
+              >
+                <div>
+                  Already Registered?
+                  <a [routerLink]="['/login']">Sign in Here</a>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-5" *ngIf="isOtp">
+            <form class="form-div">
+              <h4>Verify User</h4>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Enter Code</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="verificationCode"
+                  (value)="(verificationCode)"
+                  aria-describedby="emailHelp"
+                  (change)="onChangeverification($event)"
+                />
+              </div>
+              <button
+                class="btn btn-primary login-btn"
+                id="loginBtn"
+                (click)="verifyCode()"
+              >
+                VERIFY
+              </button>
+              <div
+                class="d-flex justify-content-between align-items-center mt-1"
+              >
+                <div><a (click)="resendCode()">resend OTP</a></div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-7">
+            <div class="signupImg">
+              <img src="/assets/images/signup.svg" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

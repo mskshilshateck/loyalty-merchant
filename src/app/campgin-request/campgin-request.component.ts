@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { catchError } from 'rxjs/operators';
+import { CommonService } from '../global/common.service';
+import { UserapiService } from '../user/userapi.service';
 
 @Component({
   selector: 'app-campgin-request',
@@ -8,13 +12,22 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./campgin-request.component.sass'],
 })
 export class CampginRequestComponent implements OnInit {
-  constructor(private router: Router, private modalService: NgbModal) {}
+
+  constructor(
+    private router: Router,
+    private modalService: NgbActiveModal,
+    ) {}
 
   ngOnInit(): void {}
-  onBegin() {
+  
+  onBegin(campaignForm: NgForm) {
+    localStorage.setItem('campaignName', campaignForm.value.campaignName)
+    this.modalService.close();
     this.router.navigate(['newcompaign']);
-    this.modalService.dismissAll({
-      ariaLabelledBy: 'modal-basic-title',
-    });
+   
+  }
+
+  close() {
+    this.modalService.close();
   }
 }

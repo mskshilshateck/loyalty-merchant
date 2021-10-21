@@ -5,350 +5,530 @@
     </div>
     <div class="col-md-11">
       <div class="new-comapign container">
-        <h5><a href=""><img src="/assets/images/backIcon.svg" />Back to Campaigns</a></h5>
-        <div class="compaign-name">
-          <h6>Flat White</h6>
-          <div class="d-flex justify-content-between align-items-center">
-            <h4 class="mb-0 koolText">Kool Café Lapsed Recall</h4>
-            <button type="button" class="btn btn-primary request">
-              SEND REQUEST
-            </button>
+        <form #campaignForm="ngForm" (ngSubmit)="onSaveCampaign()">
+          <h5>
+            <a><img src="/assets/images/backIcon.svg" />Back to Campaigns</a>
+          </h5>
+          <div class="compaign-name">
+            <h6>Flat White</h6>
+            <div class="d-flex justify-content-between align-items-center">
+              <h4 class="mb-0 koolText">{{ campaignName }}</h4>
+              <button type="submit" class="btn btn-primary request">
+                SEND REQUEST
+              </button>
+            </div>
+            <h5 class="boldText"><a>Edit Campaign name</a></h5>
           </div>
-          <h5 class="boldText"><a href="">Edit Campaign name</a></h5>
-        </div>
-        <div class="add-compaign">
-          <div>
-            <div class="border-bottom">
-              <div class="d-flex justify-content-between">
+          <div class="add-compaign">
+            <div>
+              <div class="border-bottom">
+                <div class="d-flex justify-content-between">
+                  <div class="textNew">
+                    <img
+                      src="../../assets/images/checkinactive.svg"
+                      class="img-check"
+                    /><img
+                      src="../../assets/images/storefront-bold.svg"
+                      class="img-width"
+                    />
+                    Outlets
+                    <p class="text-outlet">
+                      Select which outlet(s) you want to this campaign to
+                      target.
+                    </p>
+                  </div>
+                  <div>
+                    <button
+                      *ngIf="accordianOutletStart == true"
+                      class="btn btn-success btn-done"
+                      (click)="
+                        setaccordianState('outlets');
+                        accordianActive == 'outlets'
+                          ? setaccordianActive('')
+                          : setaccordianActive('outlets')
+                      "
+                    >
+                      Done
+                    </button>
+                    <button
+                      *ngIf="accordianOutletStart == false"
+                      class="btn btn-default btn-outlet"
+                      (click)="
+                        setaccordianState('outlets');
+                        accordianActive == 'outlets'
+                          ? setaccordianActive('')
+                          : setaccordianActive('outlets')
+                      "
+                    >
+                      Edit Outlets
+                    </button>
+                  </div>
+                </div>
+                <div [hidden]="accordianActive != 'outlets'">
+                  <div class="outlet-content">
+                    <div>
+                      <!-- <button class="btn btn-primary active-btn" type="button" *ngIf="let outlet of brandOutletList">
+                      {{ outlet.name }}
+                    </button> -->
+                      <button
+                        type="button"
+                        (click)="selectOutlet('Al Gharafa')"
+                        class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                      >
+                        Al Gharafa
+                      </button>
+                      <button
+                        type="button"
+                        (click)="selectOutlet('Matar Kadeem')"
+                        class="btn btn-outline-secondary btn-bordr"
+                      >
+                        Matar Kadeem
+                      </button>
+                      <button
+                        type="button"
+                        (click)="selectOutlet('Doha Festival City')"
+                        class="btn btn-outline-secondary btn-bordr"
+                      >
+                        Doha Festival City
+                      </button>
+                      <button
+                        type="button"
+                        (click)="selectOutlet('Al Wakra')"
+                        class="btn btn-outline-secondary btn-bordr"
+                      >
+                        Al Wakra
+                      </button>
+                      <button
+                        type="button"
+                        (click)="selectOutlet('Souq Waqif')"
+                        class="btn btn-outline-secondary btn-bordr"
+                      >
+                        Souq Waqif
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between mt-4">
                 <div class="textNew">
                   <img
                     src="../../assets/images/checkinactive.svg"
                     class="img-check"
-                  /><img
-                    src="../../assets/images/storefront-bold.svg"
-                    class="img-width"
-                  />
-                  Outlets
-                  <p class="text-outlet">
-                    Select which outlet(s) you want to this campaign to target.
-                  </p>
-                </div>
-                <div>
-                  <button
-                    *ngIf="accordianOutletStart == true"
-                    class="btn btn-success btn-done"
-                    (click)="
-                      setaccordianState('outlets');
-                      accordianActive == 'outlets'
-                        ? setaccordianActive('')
-                        : setaccordianActive('outlets')
-                    "
-                  >
-                    Done
-                  </button>
-                  <button
-                    *ngIf="accordianOutletStart == false"
-                    class="btn btn-default btn-outlet"
-                    (click)="
-                      setaccordianState('outlets');
-                      accordianActive == 'outlets'
-                        ? setaccordianActive('')
-                        : setaccordianActive('outlets')
-                    "
-                  >
-                    Edit Outlets
-                  </button>
-                </div>
-              </div>
-              <div *ngIf="accordianActive == 'outlets'">
-                <div class="outlet-content">
-                  <div>
-                    <button class="btn btn-primary active-btn" type="submit">
-                      All
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-outline-secondary btn-bordr"
-                    >
-                      Al Gharafa
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-outline-secondary btn-bordr"
-                    >
-                      Matar Kadeem
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-outline-secondary btn-bordr"
-                    >
-                      Doha Festival City
-                    </button>
-                  </div>
-                  <div class="mt-2 mb-4">
-                    <button
-                      type="button"
-                      class="btn btn-outline-secondary btn-bordr"
-                    >
-                      Al Wakra
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-outline-secondary btn-bordr"
-                    >
-                      Souq Waqif
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="d-flex justify-content-between mt-2">
-              <div class="textNew">
-                <img
-                  src="../../assets/images/checkinactive.svg"
-                  class="img-check"
-                />
-                <img
-                  src="../../assets/images/users-bold.svg"
-                  class="img-width"
-                />Segments
-                <p class="text-segmnt">
-                  Which customers would you like to include in this campaign?
-                </p>
-              </div>
-              <div *ngIf="accordianSegmentStart == false">
-                <button
-                  class="btn btn-success btn-outlet"
-                  (click)="
-                    setaccordianState('segments');
-                    accordianActive == 'segments'
-                      ? setaccordianActive('')
-                      : setaccordianActive('segments')
-                  "
-                >
-                  {{ !accordianSegmentStart && "Edit Segments" }}
-                </button>
-              </div>
-            </div>
-
-            <div *ngIf="accordianActive == 'segments'">
-              <div class="segment">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
-                  />
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    All my customers
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
-                  />
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Active customers
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
-                  />
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Lapsed customers
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
-                  />
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Top customers in the last period of time
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
-                  />
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Customers by age and country
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <div class="border-bottom pt-3"></div>
-            <div class="d-flex justify-content-between mt-2">
-              <div class="textNew">
-                <img
-                  src="../../assets/images/checkinactive.svg"
-                  class="img-check"
-                />
-                <img
-                  src="../../assets/images/gift-bold.svg"
-                  class="img-width"
-                />
-                Rewards
-              </div>
-              <div *ngIf="accordianRewardsStart == false">
-                <button
-                  class="btn btn-success btn-outlet"
-                  (click)="
-                    setaccordianState('rewards');
-                    accordianActive == 'rewards'
-                      ? setaccordianActive('')
-                      : setaccordianActive('rewards')
-                  "
-                >
-                  {{ !accordianRewardsStart && "Edit Rewards" }}
-                </button>
-              </div>
-            </div>
-
-            <div *ngIf="accordianActive == 'rewards'">
-              <div class="reward">
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label"
-                    >Describe the reward for this campaign</label
-                  >
-                  <input
-                    type=""
-                    class="form-control"
-                    id=""
-                    aria-describedby="emailHelp"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label"
-                    >When will this reward expire?</label
-                  >
-                  <input
-                    type=""
-                    class="form-control date-select"
-                    placeholder="Select a date"
                   />
                   <img
-                    src="../../assets/images/icon-action-calendar.svg"
-                    class="calender"
+                    src="../../assets/images/users-bold.svg"
+                    class="img-width"
+                  />Segments
+                  <p class="text-segmnt">
+                    Which customers would you like to include in this campaign?
+                  </p>
+                </div>
+                <div *ngIf="accordianSegmentStart == false">
+                  <button
+                    class="btn btn-success btn-outlet"
+                    (click)="
+                      setaccordianState('segments');
+                      accordianActive == 'segments'
+                        ? setaccordianActive('')
+                        : setaccordianActive('segments')
+                    "
+                  >
+                    {{ !accordianSegmentStart && "Edit Segments" }}
+                  </button>
+                </div>
+              </div>
+
+              <div [hidden]="accordianActive != 'segments'">
+                <div class="segment">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      value="allCustomer"
+                      [(ngModel)]="campaignModel.segment"
+                      id="flexRadioDefault1"
+                    />
+                    <label class="form-check-label"> All my customers </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      value="activeCustomer"
+                      [(ngModel)]="campaignModel.segment"
+                      id="flexRadioDefault1"
+                    />
+                    <label class="form-check-label"> Active customers </label>
+                    <div *ngIf="campaignModel.segment == 'activeCustomer'">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          name="active30"
+                          [(ngModel)]="campaignModel.segmentDetail"
+                          type="radio"
+                          value="Last 30 days"
+                        />
+                        <label class="form-check-label"> Last 30 days </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          name="active60"
+                          [(ngModel)]="campaignModel.segmentDetail"
+                          type="radio"
+                          value="Last 60 days"
+                        />
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Last 60 days
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          name="active90"
+                          [(ngModel)]="campaignModel.segmentDetail"
+                          type="radio"
+                          value="Last 90 days"
+                        />
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Last 90 days
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          name="activecustome"
+                          [(ngModel)]="campaignModel.segmentDetail"
+                          type="radio"
+                          value="custom"
+                        />
+                        <label class="form-check-label" for="flexCheckChecked">
+                          custom
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      value="lapsedCustomer"
+                      [(ngModel)]="campaignModel.segment"
+                      id="flexRadioDefault1"
+                    />
+                    <label class="form-check-label"> Lapsed customers </label>
+                    <div *ngIf="campaignModel.segment == 'lapsedCustomer'">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          name="Lapsed30"
+                          [(ngModel)]="campaignModel.segmentDetail"
+                          type="radio"
+                          value="Last 30 days"
+                        />
+                        <label class="form-check-label"> Last 30 days </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          name="Lapsed60"
+                          [(ngModel)]="campaignModel.segmentDetail"
+                          type="radio"
+                          value="Last 60 days"
+                        />
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Last 60 days
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          name="Lapsed90"
+                          [(ngModel)]="campaignModel.segmentDetail"
+                          type="radio"
+                          value="Last 90 days"
+                        />
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Last 90 days
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          name="Lapsedcustome"
+                          [(ngModel)]="campaignModel.segmentDetail"
+                          type="radio"
+                          value="custom"
+                        />
+                        <label class="form-check-label" for="flexCheckChecked">
+                          custom
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      value="topCustomer"
+                      [(ngModel)]="campaignModel.segment"
+                      id="flexRadioDefault1"
+                    />
+                    <label class="form-check-label">
+                      Top customers in the last period of time
+                    </label>
+                    <div *ngIf="campaignModel.segment == 'topCustomer'">
+                      Top
+                      <input
+                        type="text"
+                        [(ngModel)]="campaignModel.topCustomer"
+                        name="topCustomer"
+                      />
+                      from
+                      <div ngbDropdown class="d-inline-block">
+                        <button
+                          class="btn dropdown-btn"
+                          id="dropdownBasic1"
+                          type="button"
+                          ngbDropdownToggle
+                        >
+                          Toggle dropdown
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                          <button
+                            type="button"
+                            (click)="setTopCustomer('Last 30 days')"
+                            ngbDropdownItem
+                          >
+                            Last 30 days
+                          </button>
+                          <button
+                            type="button"
+                            (click)="setTopCustomer('Last 60 days')"
+                            ngbDropdownItem
+                          >
+                            Last 60 days
+                          </button>
+                          <button
+                            type="button"
+                            (click)="setTopCustomer('Last 90 days')"
+                            ngbDropdownItem
+                          >
+                            Last 90 days
+                          </button>
+                          <!-- <button type="button" (click)="setTopCustomer('custom')" ngbDropdownItem>custom</button> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      value="ageCustomer"
+                      [(ngModel)]="campaignModel.segment"
+                      id="flexRadioDefault1"
+                    />
+                    <label class="form-check-label">
+                      Customers by age and country
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border-bottom pt-1"></div>
+              <div class="d-flex justify-content-between mt-4">
+                <div class="textNew">
+                  <img
+                    src="../../assets/images/checkinactive.svg"
+                    class="img-check"
                   />
+                  <img
+                    src="../../assets/images/gift-bold.svg"
+                    class="img-width"
+                  />
+                  Rewards
                 </div>
-                <div class="form-floating">
-                  <div class="d-flex justify-content-between">
-                    <p>Message for customers</p>
-                    <p class="textChar">160 characters</p>
-                  </div>
-                  <textarea
-                    class="form-control"
-                    placeholder="Leave a comment here"
-                    id="floatingTextarea2"
-                    style="height: 100px"
-                  ></textarea>
+                <div *ngIf="accordianRewardsStart == false">
+                  <button
+                    class="btn btn-success btn-outlet"
+                    (click)="
+                      setaccordianState('rewards');
+                      accordianActive == 'rewards'
+                        ? setaccordianActive('')
+                        : setaccordianActive('rewards')
+                    "
+                  >
+                    {{ !accordianRewardsStart && "Edit Rewards" }}
+                  </button>
                 </div>
               </div>
-            </div>
 
-            <div class="border-bottom pt-3"></div>
-            <div class="d-flex justify-content-between mt-2">
-              <div class="textNew">
-                <img
-                  src="../../assets/images/checkinactive.svg"
-                  class="img-check"
-                />
-                <img
-                  src="../../assets/images/paper-plane-tilt-bold.svg"
-                  class="img-width"
-                />
-                Schedule and send
-
-                <div *ngIf="accordianActive == 'schedule'">
-                  <div class="schedule">
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label"
-                        >When would you like to send this campaign’s notification?</label
-                      >
-
-                      <input
-                        type=""
-                        class="form-control date-select"
-                        placeholder="Select a date"
-                      />
-                      <img
-                        src="../../assets/images/calendar-blank.svg"
-                        class="calenderblur"
-                      />
-                      <p class="text-alow">
-                        Please allow for at least 3 business days ahead for
-                        Loyaltee to review and send your campaign.
-                      </p>
-                      <p>
-                        We will alert customers that have received a reward in
-                        the app.
-                      </p>
+              <div [hidden]="accordianActive != 'rewards'">
+                <div class="reward">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"
+                      >Describe the reward for this campaign</label
+                    >
+                    <input
+                      type=""
+                      class="form-control"
+                      id=""
+                      name="reward"
+                      aria-describedby="emailHelp"
+                      [(ngModel)]="campaignModel.rewardName"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"
+                      >When will this reward expire?</label
+                    >
+                    <input type="date" class="form-control date-select" />
+                    <!-- <img
+                      src="../../assets/images/icon-action-calendar.svg"
+                      class="calender"
+                    /> -->
+                  </div>
+                  <div class="form-floating">
+                    <div class="d-flex justify-content-between">
+                      <p>Message for customers</p>
+                      <p class="textChar">160 characters</p>
                     </div>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="flexRadioDefault"
-                        id="flexRadioDefault1"
-                      />
-
-                      <label class="form-check-label labelText" for="flexRadioDefault1">
-                        Standard delivery
-                      </label>
-                      <span class="d-block"
-                        >Send notification at a specific time <a href="">Select time</a></span
-                      >
-                    </div>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="flexRadioDefault"
-                        id="flexRadioDefault1"
-                      />
-                      <label class="form-check-label labelText" for="flexRadioDefault1">
-                        Intelligent delivery<div class="d-inline-block recomend">Recommended</div>
-                      </label>
-                      <span class="d-block"
-                        >Send notification at the time each customer is most<br />
-                        likely to open the app (Loyaltee’s Intelligence).</span
-                      >
-                    </div>
+                    <textarea
+                      class="form-control"
+                      name="rewardMessage"
+                      [(ngModel)]="campaignModel.rewardMessage"
+                      placeholder="Leave a comment here"
+                      id="floatingTextarea2"
+                      style="height: 100px"
+                    ></textarea>
                   </div>
                 </div>
               </div>
-              <div *ngIf="accordianScheduleStart == false">
-                <button
-                  class="btn btn-success btn-outlet"
-                  (click)="
-                    setaccordianState('schedule');
-                    accordianActive == 'schedule'
-                      ? setaccordianActive('')
-                      : setaccordianActive('schedule')
-                  "
-                >
-                  {{ !accordianScheduleStart && "Edit Schedule" }}
-                </button>
+
+              <div class="border-bottom pt-3"></div>
+              <div class="d-flex justify-content-between mt-4">
+                <div class="textNew">
+                  <img
+                    src="../../assets/images/checkinactive.svg"
+                    class="img-check"
+                  />
+                  <img
+                    src="../../assets/images/paper-plane-tilt-bold.svg"
+                    class="img-width"
+                  />
+                  Schedule and send
+
+                  <div [hidden]="accordianActive != 'schedule'">
+                    <div class="schedule">
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label"
+                          >When would you like to send this campaign’s
+                          notification?</label
+                        >
+                        <div style="position: relative">
+                          <input
+                            type="date"
+                            class="form-control date-select"
+                            name="campaignScheduledDate"
+                            [(ngModel)]="campaignModel.campaignScheduledDate"
+                            placeholder="Select a date"
+                          />
+                          <img
+                            src="../../assets/images/icon-action-calendar.svg"
+                            class="calenderblur"
+                          />
+                        </div>
+
+                        <p class="text-alow">
+                          Please allow for at least 3 business days ahead for
+                          Loyaltee to review and send your campaign.
+                        </p>
+                        <p>
+                          We will alert customers that have received a reward in
+                          the app.
+                        </p>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="flexRadioDefault"
+                          value="standard"
+                          id="flexRadioDefault1"
+                          [(ngModel)]="campaignModel.delivery"
+                        />
+
+                        <label class="form-check-label labelText">
+                          Standard delivery
+                        </label>
+
+                        <span class="d-block"
+                          >Send notification at a specific time
+                          <a
+                            style="cursor: pointer"
+                            *ngIf="!toggleTimer"
+                            (click)="toggleTimer = !toggleTimer"
+                            >Select time</a
+                          >
+                          <span *ngIf="toggleTimer">
+                            <ngb-timepicker
+                              [(ngModel)]="campaignModel.timer"
+                              name="timer"
+                              [meridian]="true"
+                              [spinners]="false"
+                            ></ngb-timepicker> </span
+                        ></span>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="flexRadioDefault"
+                          value="intellegent"
+                          id="flexRadioDefault2"
+                          [(ngModel)]="campaignModel.delivery"
+                        />
+                        <label
+                          class="form-check-label labelText"
+                          for="flexRadioDefault2"
+                        >
+                          Intelligent delivery
+                          <div class="d-inline-block recomend">Recommended</div>
+                        </label>
+                        <span class="d-block"
+                          >Send notification at the time each customer is
+                          most<br />
+                          likely to open the app (Loyaltee’s
+                          Intelligence).</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="accordianScheduleStart == false">
+                  <button
+                    class="btn btn-success btn-outlet"
+                    (click)="
+                      setaccordianState('schedule');
+                      accordianActive == 'schedule'
+                        ? setaccordianActive('')
+                        : setaccordianActive('schedule')
+                    "
+                  >
+                    {{ !accordianScheduleStart && "Edit Schedule" }}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>

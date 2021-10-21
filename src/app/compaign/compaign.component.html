@@ -5,9 +5,34 @@
     </div>
     <div class="col-md-11">
       <div class="compaign container">
-        <span class="flat-text"
-          >Flat White <img src="/assets/images/arrowdown.svg"
-        /></span>
+        <div class="brands-list">
+          <div>
+            <button
+              [ngClass]="selectedBrand == '' ? 'select' : 'non-select'"
+              (click)="selectBrand('')"
+            >
+              All
+            </button>
+          </div>
+          <div class="brand" *ngFor="let brand of availableBrands">
+            <button
+              [ngClass]="
+                selectedBrand !== '' && selectedBrand == brand.name
+                  ? 'select'
+                  : 'non-select'
+              "
+              (click)="selectBrand(brand)"
+            >
+              {{ brand.name }}
+            </button>
+          </div>
+        </div>
+        <!-- <div ngbDropdown>
+          <span ngbDropdownToggle class="flat-text">Flat White <img src="/assets/images/arrowdown.svg" /></span>
+          <div ngbDropdownMenu class="p-2">
+              <button *ngFor="let brand of availableBrands">{{ brand.name }}</label>
+          </div>
+        </div> -->
         <h5 class="mb-2">Campaigns</h5>
         <p>
           Campaign allows you to drive footfall and<br />
@@ -29,13 +54,85 @@
                   />
                   <img src="/assets/images/search.svg" class="serch-ico" />
                 </li>
-                <li>
+                <li ngbDropdown>
                   <button
                     type="button"
                     class="btn btn-outline-secondary filter"
                   >
                     <img src="/assets/images/filter.svg" class="" /> Filter
                   </button>
+                  <div ngbDropdownMenu class="p-2">
+                    <label class="mb-3 filter-header">Filter by Status</label>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p>All</p>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="checkbox" ngbDropdownItem />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p>Active</p>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="checkbox" ngbDropdownItem />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p>Requested</p>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="checkbox" ngbDropdownItem />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p>Completed</p>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="checkbox" ngbDropdownItem />
+                      </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+
+                    <label class="mb-3 filter-header"
+                      >Filter by Target Segment</label
+                    >
+                    <div class="row">
+                      <div class="col-md-6"><p>All Customers</p></div>
+                      <div class="col-md-6">
+                        <input type="checkbox" ngbDropdownItem />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6"><p>Active Customers</p></div>
+                      <div class="col-md-6">
+                        <input type="checkbox" ngbDropdownItem />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6"><p>Lapsed Customers</p></div>
+                      <div class="col-md-6">
+                        <input type="checkbox" ngbDropdownItem />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6"><p>Top Customers</p></div>
+                      <div class="col-md-6">
+                        <input type="checkbox" ngbDropdownItem />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p>Customers by Age & Region</p>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="checkbox" ngbDropdownItem />
+                      </div>
+                    </div>
+                  </div>
                 </li>
                 <li class="export-date">
                   <img src="/assets/images/export.svg" />Export Data
@@ -47,6 +144,7 @@
                 type="button"
                 class="btn btn-primary request"
                 (click)="onBegin()"
+                [disabled]="!selectedBrand"
               >
                 REQUEST CAMPAIGN
               </button>
@@ -57,8 +155,12 @@
               <thead>
                 <tr>
                   <th scope="col">Campaigns</th>
-                  <th scope="col">
-                    Scheduled Date<img src="/assets/images/arrowDown2.svg" />
+                  <th ngbDropdown scope="col">
+                    <span ngbDropdownToggle class="sched-text">Scheduled Date</span>
+                    <div ngbDropdownMenu>
+                      <button ngbDropdownItem>Scheduled Date</button>
+                      <button ngbDropdownItem>Requested Date</button>
+                    </div>
                   </th>
                   <th scope="col">
                     Progress<img src="/assets/images/arrowDown2.svg" />
@@ -67,11 +169,11 @@
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
+              <tbody *ngIf="allCampaign && allCampaign.length != 0">
+                <tr *ngFor="let campaign of allCampaign">
                   <td scope="row">
                     <div class="compaign-data">
-                      <h6>Campaign Title 01</h6>
+                      <h6>{{ campaign.campaignName }}</h6>
                       <span class="d-block">All Customers</span>
                       <span class="d-block text-sent"
                         >Sent to 1,205 customers</span
@@ -79,7 +181,16 @@
                     </div>
                   </td>
 
-                  <td><span class="d-block">#Apr 11, 2021</span></td>
+                  <td>
+                    <span
+                      class="d-block"
+                      *ngIf="campaign.scheduledNotification.notificationDate"
+                      >#{{
+                        campaign.scheduledNotification.notificationDate
+                          | date: "mediumDate"
+                      }}</span
+                    >
+                  </td>
                   <td>
                     <div class="d-flex">
                       23%
@@ -94,158 +205,38 @@
                       </div>
                     </div>
                   </td>
-                  <td><span class="badge bg-success">Active</span></td>
                   <td>
-                    <div class="btn-group">
-                      <button type="button" class="btn border">view</button>
+                    <span
+                      class="badge"
+                      [ngClass]="{
+                        'bg-success': campaign.campaginStatus == 'Active',
+                        'bg-rejected': campaign.campaginStatus == 'Rejected',
+                        'bg-scheduled': campaign.campaginStatus == 'Scheduled',
+                        'bg-expired': campaign.campaginStatus == 'Expired',
+                        'bg-requested': campaign.campaginStatus == 'Requested'
+                      }"
+                      >{{ campaign.campaginStatus }}</span
+                    >
+                  </td>
+                  <td>
+                    <div ngbDropdown class="btn-group">
                       <button
                         type="button"
-                        class="btn border dropdown-toggle dropdown-toggle-split"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
+                        class="btn border"
+                        (click)="onCampaignDetail(campaign._id)"
                       >
-                        <span class="visually-hidden">Toggle Dropdown</span>
+                        view
                       </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li>
-                          <a class="dropdown-item" href="#">Another action</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td scope="row">
-                    <div class="compaign-data">
-                      <h6>Campaign Title 01</h6>
-                      <span class="d-block">All Customers</span>
-                      <span class="d-block text-sent"
-                        >Sent to 1,205 customers</span
-                      >
-                    </div>
-                  </td>
-
-                  <td><span class="d-block">#Apr 11, 2021</span></td>
-                  <td>
-                    <div class="d-flex">
-                      23%
-                      <div class="progress">
-                        <div
-                          class="progress-bar"
-                          role="progressbar"
-                          aria-valuenow="0"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        ></div>
-                      </div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-success">Active</span></td>
-                  <td>
-                    <div class="btn-group">
-                      <button type="button" class="btn border">view</button>
                       <button
+                        ngbDropdownToggle
                         type="button"
                         class="btn border dropdown-toggle dropdown-toggle-split"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        <span class="visually-hidden">Toggle Dropdown</span>
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li>
-                          <a class="dropdown-item" href="#">Another action</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td scope="row">
-                    <div class="compaign-data">
-                      <h6>Campaign Title 01</h6>
-                      <span class="d-block">All Customers</span>
-                      <span class="d-block text-sent"
-                        >Sent to 1,205 customers</span
-                      >
-                    </div>
-                  </td>
-
-                  <td><span class="d-block">#Apr 11, 2021</span></td>
-                  <td>
-                    <div class="d-flex">
-                      23%
-                      <div class="progress">
-                        <div
-                          class="progress-bar"
-                          role="progressbar"
-                          aria-valuenow="0"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        ></div>
-                      </div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-success">Active</span></td>
-                  <td>
-                    <div class="btn-group">
-                      <button type="button" class="btn border">view</button>
-                      <button
-                        type="button"
-                        class="btn border dropdown-toggle dropdown-toggle-split"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        <span class="visually-hidden">Toggle Dropdown</span>
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li>
-                          <a class="dropdown-item" href="#">Another action</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td scope="row">
-                    <div class="compaign-data">
-                      <h6>Campaign Title 01</h6>
-                      <span class="d-block">All Customers</span>
-                      <span class="d-block text-sent"
-                        >Sent to 1,205 customers</span
-                      >
-                    </div>
-                  </td>
-
-                  <td><span class="d-block">#Apr 11, 2021</span></td>
-                  <td>
-                    <div class="d-flex">
-                      23%
-                      <div class="progress">
-                        <div
-                          class="progress-bar"
-                          role="progressbar"
-                          aria-valuenow="0"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        ></div>
-                      </div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-success">Active</span></td>
-                  <td>
-                    <div class="btn-group">
-                      <button type="button" class="btn border">view</button>
-                      <button
-                        type="button"
-                        class="btn border dropdown-toggle dropdown-toggle-split"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        <span class="visually-hidden">Toggle Dropdown</span>
+                        <div ngbDropdownMenu>
+                          <button ngbDropdownItem>Download CSV</button>
+                        </div>
                       </button>
                       <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Action</a></li>
@@ -258,6 +249,24 @@
                 </tr>
               </tbody>
             </table>
+            <div
+              class="jumbotron jumbotron-fluid text-center"
+              *ngIf="allCampaign && allCampaign.length == 0"
+            >
+              <div class="container">
+                <p class="lead">
+                  You currently don't have any campaigns! <br />
+                  Let's create a new one!
+                </p>
+              </div>
+              <button
+                type="button"
+                class="btn btn-primary request mb-5"
+                (click)="onBegin()"
+              >
+                REQUEST CAMPAIGN
+              </button>
+            </div>
           </div>
         </div>
       </div>
