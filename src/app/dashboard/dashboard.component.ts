@@ -2,14 +2,15 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 // import * as pluginDataLabels from 'chartjs-plugin-datalabels';
-import { Label,Colors } from 'ng2-charts';
+import { Label, Colors } from 'ng2-charts';
 import { catchError } from 'rxjs/operators';
-import {UserapiService} from "../user/userapi.service"
+import { UserapiService } from "../user/userapi.service"
 import { CommonService } from '../global/common.service';
 import * as UserActions from '../login/user.action';
 import { HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -132,15 +133,23 @@ export class DashboardComponent implements OnInit {
   ];
 
   firstTimeLogin: boolean = true;
+  isOpenPaymentTab: boolean = false;
   active = 1;
   constructor(
     private store: Store,
     private userservice: UserapiService,
     private CommonService: CommonService,
-    private http: HttpClient
-  ) {}
+    private http: HttpClient,
+    private activatedRoute: ActivatedRoute
+  ) { }
   ngOnInit(): void {
     let token = localStorage.getItem('token') || '';
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.isOpenPaymentTab = params['isOenpPaymentTab'];
+      if (this.isOpenPaymentTab) {
+        this.activeNextTab(3);
+      }
+    });
     this.userservice
       .getProfile(token)
       .pipe(catchError(this.userservice.handleError))
@@ -202,6 +211,20 @@ export class DashboardComponent implements OnInit {
 
     console.log(this.outletData, 'datat');
   }
+  onfile1change() {
+    let fileement = document.getElementById('document1') as HTMLInputElement;
+    fileement.click();
+    fileement.onchange = () => {
+      console.log(fileement.files);
+    };
+  }
+  onfile2change() {
+    let fileement = document.getElementById('document2') as HTMLInputElement;
+    fileement.click();
+    fileement.onchange = () => {
+      console.log(fileement.files);
+    };
+  }
   public updateVendorPlan() {
     let params = {
       paymentAmount: this.totalAmount,
@@ -231,7 +254,7 @@ export class DashboardComponent implements OnInit {
   }: {
     event: MouseEvent;
     active: {}[];
-  }): void {}
+  }): void { }
 
   public chartHovered({
     event,
@@ -239,7 +262,7 @@ export class DashboardComponent implements OnInit {
   }: {
     event: MouseEvent;
     active: {}[];
-  }): void {}
+  }): void { }
 
   public randomize(): void {
     // Only Change 3 values
@@ -254,7 +277,8 @@ export class DashboardComponent implements OnInit {
     ];
   }
 
-  test(searchAddress : any){
-    alert(searchAddress)
+  onAddressSelect(searchAddress: any) {
+    console.log({ "searchAddress": searchAddress });
+    // alert(searchAddress)
   }
 }

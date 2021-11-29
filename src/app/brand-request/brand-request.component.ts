@@ -29,9 +29,9 @@ export class BrandRequestComponent implements OnInit {
     private modalService: NgbActiveModal,
     private commonService: CommonService,
     private userService: UserapiService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   // onBegin() {
 
@@ -48,9 +48,11 @@ export class BrandRequestComponent implements OnInit {
     };
   }
   onAdd() {
-      this.userService.createBrand(this.brandModel).subscribe(data=>{
-        this.router.navigate(['/add-brand']);
-      },(err) => this.commonService.toastNotification('Error', err, 'Danger'))
-      this.modalService.close();
+    this.userService.createBrand(this.brandModel).subscribe(data => {
+      // this.router.navigate(['/add-brand']);
+      this.router.navigate(['/dashboard']);
+
+    }, (err) => this.commonService.toastNotification('Error', err, 'Danger'))
+    this.modalService.close();
   }
 }

@@ -7,10 +7,10 @@
       <div class="compaign container">
         <div class="brands-list">
           <div>
-           
+
           </div>
           <div class="brand">
-          
+
           </div>
         </div>
         <!-- <div ngbDropdown>
@@ -26,32 +26,22 @@
         </p>
         <div class="border-bottom"></div>
         <div class="compaign-filter">
-          <div
-            class="
+          <div class="
               search
               d-flex
               justify-content-between
               align-items-center
               mb-3
-            "
-          >
+            ">
             <div>
               <ul class="mb-0">
                 <li>
-                  <input
-                    class="form-control mr-2 search-input"
-                    type="search"
-                    placeholder="Search Business"
-                    aria-label="Search"
-                  />
+                  <input class="form-control mr-2 search-input" type="search" placeholder="Search Business"
+                    aria-label="Search" />
                   <img src="/assets/images/search.svg" class="serch-ico" />
                 </li>
                 <li ngbDropdown>
-                  <button
-                    ngbDropdownToggle
-                    type="button"
-                    class="btn btn-outline-secondary filter"
-                  >
+                  <button ngbDropdownToggle type="button" class="btn btn-outline-secondary filter">
                     <img src="/assets/images/filter.svg" class="" /> Filter
                   </button>
                   <div ngbDropdownMenu class="p-2">
@@ -90,29 +80,35 @@
                     </div>
                     <div class="dropdown-divider"></div>
 
-                    <label class="mb-3 filter-header"
-                      >Filter by Target Segment</label
-                    >
+                    <label class="mb-3 filter-header">Filter by Target Segment</label>
                     <div class="row">
-                      <div class="col-md-6"><p>All Customers</p></div>
+                      <div class="col-md-6">
+                        <p>All Customers</p>
+                      </div>
                       <div class="col-md-6">
                         <input type="checkbox" ngbDropdownItem />
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-6"><p>Active Customers</p></div>
+                      <div class="col-md-6">
+                        <p>Active Customers</p>
+                      </div>
                       <div class="col-md-6">
                         <input type="checkbox" ngbDropdownItem />
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-6"><p>Lapsed Customers</p></div>
+                      <div class="col-md-6">
+                        <p>Lapsed Customers</p>
+                      </div>
                       <div class="col-md-6">
                         <input type="checkbox" ngbDropdownItem />
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-6"><p>Top Customers</p></div>
+                      <div class="col-md-6">
+                        <p>Top Customers</p>
+                      </div>
                       <div class="col-md-6">
                         <input type="checkbox" ngbDropdownItem />
                       </div>
@@ -133,11 +129,7 @@
               </ul>
             </div>
             <div>
-              <button
-                type="button"
-                class="btn btn-primary request"
-                (click)="onBegin()"
-              >
+              <button type="button" class="btn btn-primary request" (click)="onBegin()">
                 Add NEW BRAND
               </button>
             </div>
@@ -151,27 +143,27 @@
                   <th scope="col">Payment Status</th>
                 </tr>
               </thead>
-              <tbody *ngIf = "availableBrands && availableBrands.length !=0" >
-                <tr *ngFor= "let Brand of availableBrands" >
+              <tbody *ngIf="availableBrands && availableBrands.length !=0">
+                <tr *ngFor="let Brand of availableBrands">
                   <td scope="row">
                     <div class="compaign-data">
                       <h6>{{Brand.name}}</h6>
                     </div>
                   </td>
                   <td>
-                    <span
-                    class = "badge"
-                    [ngClass]="{
+                    <span class="badge" [ngClass]="{
                       'bg-success':Brand.isActive === true,
                       'bg-danger':Brand.isActive === false
                     }">
-                    {{Brand.isActive === true ? 'Active' : 'Deactivate'}}
-                  </span>
+                      {{Brand.isActive === true ? 'Active' : 'Deactivate'}}
+                    </span>
                   </td>
                   <td>
                     <div class="compaign-data">
                       <h6></h6>
-                      <span class="d-block">Make Payment</span>
+                      <span class="d-block">
+                        <a [routerLink]="'/dashboard'" [queryParams]="{isOenpPaymentTab: true}">Make Payment</a>
+                      </span>
                     </div>
                   </td>
                 </tr>
