@@ -41,7 +41,7 @@
                   <input
                     class="form-control mr-2 search-input"
                     type="search"
-                    placeholder="Search compaigns"
+                    placeholder="Search Business"
                     aria-label="Search"
                   />
                   <img src="/assets/images/search.svg" class="serch-ico" />
@@ -151,19 +151,22 @@
                   <th scope="col">Payment Status</th>
                 </tr>
               </thead>
-              <tbody >
-                <tr >
+              <tbody *ngIf = "availableBrands && availableBrands.length !=0" >
+                <tr *ngFor= "let Brand of availableBrands" >
                   <td scope="row">
                     <div class="compaign-data">
-                      <h6></h6>
-                      <span class="d-block">Pizza Hut</span>
+                      <h6>{{Brand.name}}</h6>
                     </div>
                   </td>
                   <td>
-                    <div class="compaign-data">
-                      <h6></h6>
-                      <span class="d-block">Approved</span>
-                    </div>
+                    <span
+                    class = "badge"
+                    [ngClass]="{
+                      'bg-success':Brand.isActive === true,
+                      'bg-danger':Brand.isActive === false
+                    }">
+                    {{Brand.isActive === true ? 'Active' : 'Deactivate'}}
+                  </span>
                   </td>
                   <td>
                     <div class="compaign-data">

@@ -205,8 +205,9 @@
           <div class="card">
             <div class="card-body">
               <div class="tabs-container">
-                <nav ngbNav #nav="ngbNav" class="nav-tabs">
-                  <ng-container ngbNavItem>
+                
+                <nav ngbNav #nav="ngbNav" class="nav-tabs" [(activeId)]="activeId" >
+                  <ng-container [ngbNavItem]="1" >
                     <a ngbNavLink>PLANS</a>
                     <ng-template ngbNavContent>
                       <div class="row">
@@ -214,82 +215,42 @@
                           <h6 class="text-capitalize heading-incard">
                             Best Pricing Plans
                           </h6>
-                          <div class="form-check">
+                          <!-- {{JSON.stringplans}} -->
+                          <div class="form-check" *ngFor="let plan of plans.data">
+                            <form>
                             <input
                               class="form-check-input"
                               type="radio"
                               name="flexRadioDefault"
                               id="flexRadioDefault1"
+                              (change)="selectedPlan(plan)"
                             />
                             <label
-                              class="form-check-label"
+                              class="form-check-label text-uppercase"
                               for="flexRadioDefault1"
                             >
-                              Plan 1 - 1 Month Free Trial
+                              {{plan.planName}}
                             </label>
-                          </div>
-                          <div class="form-check">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              name="flexRadioDefault"
-                              id="flexRadioDefault2"
-                              checked
-                            />
-                            <label
-                              class="form-check-label"
-                              for="flexRadioDefault2"
-                            >
-                              Plan 2 - 3 Month - Start From 130 QAR Per Month
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              name="flexRadioDefault"
-                              id="flexRadioDefault2"
-                              checked
-                            />
-                            <label
-                              class="form-check-label"
-                              for="flexRadioDefault2"
-                            >
-                              Plan 3 - 6 Month - 10% Discount Start From 117 QAR
-                              Per Month
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              name="flexRadioDefault"
-                              id="flexRadioDefault2"
-                              checked
-                            />
-                            <label
-                              class="form-check-label"
-                              for="flexRadioDefault2"
-                            >
-                              Plan 4 - 12 Month - 15% Discount Start From 111
-                              QAR Per Month
-                            </label>
+                          </form>
                           </div>
                           <h6 class="text-capitalize heading-incard">
                             Best Features Plans
                           </h6>
+                          <form>
                           <div class="form-check">
                             <input
                               class="form-check-input"
                               type="radio"
                               name="flexRadioDefault"
                               id="flexRadioDefault1"
+                              value="{{selectplan.insights}}"
+                              (change)="setFeatures($event,'Insights')"
                             />
                             <label
                               class="form-check-label"
                               for="flexRadioDefault1"
                             >
-                              Plan 1 - 1 Month Free Trial
+                              Insight
                             </label>
                           </div>
                           <div class="form-check">
@@ -299,12 +260,14 @@
                               name="flexRadioDefault"
                               id="flexRadioDefault2"
                               checked
+                              value="{{selectplan.deliveryRedeemCode}}"
+                              (change)="setFeatures($event,'Delivery Redeem Code')"
                             />
                             <label
                               class="form-check-label"
                               for="flexRadioDefault2"
                             >
-                              Plan 2 - 3 Month - Start From 130 QAR Per Month
+                              Campagin
                             </label>
                           </div>
                           <div class="form-check">
@@ -314,31 +277,17 @@
                               name="flexRadioDefault"
                               id="flexRadioDefault2"
                               checked
+                              value="{{selectplan.campaigns}}"
+                              (change)="setFeatures($event,'Campagin')"
                             />
                             <label
                               class="form-check-label"
                               for="flexRadioDefault2"
                             >
-                              Plan 3 - 6 Month - 10% Discount Start From 117 QAR
-                              Per Month
+                              Delivery Redeem Code
                             </label>
                           </div>
-                          <div class="form-check">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              name="flexRadioDefault"
-                              id="flexRadioDefault2"
-                              checked
-                            />
-                            <label
-                              class="form-check-label"
-                              for="flexRadioDefault2"
-                            >
-                              Plan 4 - 12 Month - 15% Discount Start From 111
-                              QAR Per Month
-                            </label>
-                          </div>
+                        </form>
                           <h6 class="text-capitalize heading-incard">
                             Best Addition Pricing
                           </h6>
@@ -355,77 +304,21 @@
                                 padding: 0.2rem;
                                 border: 1px solid #eeee;
                               "
+                              (change)="setBranch($event)"
                             >
-                              <option>01</option>
-                              <option>02</option>
-                              <option>03</option>
-                              <option>04</option>
+                              <option value=0>01</option>
+                              <option value="1000">02</option>
+                              <option value="2000">03</option>
+                              <option value="2850">04</option>
+                              <option value="3700">05</option>
+                              <option value="4550">06</option>
+                              <option value="5200">07</option>
+                              <option value="5850">08</option>
+                              <option value="6500">09</option>
+                              <option value="7150">10</option>
+                              <option value="7450">11+</option>
                             </select>
-                            <h6 class="text-capitalize heading-incard">
-                              Best Pricing Plans
-                            </h6>
-                            <div class="form-check">
-                              <input
-                                class="form-check-input"
-                                type="radio"
-                                name="flexRadioDefault"
-                                id="flexRadioDefault1"
-                              />
-                              <label
-                                class="form-check-label"
-                                for="flexRadioDefault1"
-                              >
-                                One Branch - Free, Added In Base Pricing
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input
-                                class="form-check-input"
-                                type="radio"
-                                name="flexRadioDefault"
-                                id="flexRadioDefault2"
-                                checked
-                              />
-                              <label
-                                class="form-check-label"
-                                for="flexRadioDefault2"
-                              >
-                                Up To 2 -3 Branches - QAR 1000 Per Additional
-                                Branch
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input
-                                class="form-check-input"
-                                type="radio"
-                                name="flexRadioDefault"
-                                id="flexRadioDefault2"
-                                checked
-                              />
-                              <label
-                                class="form-check-label"
-                                for="flexRadioDefault2"
-                              >
-                                Up To 4 -6 Branches - QAR 850 Per Additional
-                                Branch
-                              </label>
-                            </div>
-
-                            <div class="form-check">
-                              <input
-                                class="form-check-input"
-                                type="radio"
-                                name="flexRadioDefault"
-                                id="flexRadioDefault2"
-                                checked
-                              />
-                              <label
-                                class="form-check-label"
-                                for="flexRadioDefault2"
-                              >
-                                11+ Branches - QAR 350 Per Additional Branch
-                              </label>
-                            </div>
+                            
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -436,35 +329,27 @@
                               <p>Pricing</p>
                             </div>
                             <div class="text-container">
-                              <p>Plan 3</p>
-                              <p>QAR 780.00</p>
+                              <p>{{onePlan.planName}}</p>
+                              <p>QAR {{onePlan.planTypeAmount}}</p>
                             </div>
                             <h6>Addon Features</h6>
                             <div class="text-container">
-                              <p>Insights</p>
-                              <p>QAR 240.00</p>
-                            </div>
-                            <div class="text-container">
-                              <p>Campaigns</p>
-                              <p>QAR 240.00</p>
-                            </div>
-                            <div class="text-container">
-                              <h6>Subtotal</h6>
-                              <p>QAR 1260.00</p>
+                              <p>{{feature.name}}</p>
+                              <p>QAR {{feature.value}}</p>
                             </div>
                             <div class="text-container">
                               <p>Subtotal After Discount</p>
-                              <p>QAR 1134.00</p>
+                              <p>QAR {{subtotal({feature: feature.value,plan: onePlan.planTypeAmount})}}</p>
                             </div>
                             <div class="text-container">
                               <p>Branch Pricing</p>
-                              <p>QAR 4550.00</p>
+                              <p>QAR {{Branch}}</p>
                             </div>
                             <div class="text-container">
                               <h6>Total (QAR)</h6>
-                              <p>QAR 5684.00</p>
+                              <p>QAR {{total({branch: Branch, subtotal: subtotalAmount})}}</p>
                             </div>
-                            <button class="btn-payment text-capitalize">
+                            <button class="btn-payment text-capitalize" (click)="updateVendorPlan()">
                               CONFIRM & NEXT
                             </button>
                           </div>
@@ -472,7 +357,7 @@
                       </div>
                     </ng-template>
                   </ng-container>
-                  <ng-container ngbNavItem>
+                  <ng-container [ngbNavItem]="2">
                     <a ngbNavLink>BUSINESS DETAILS</a>
                     <ng-template ngbNavContent>
                       <div class="row">
@@ -487,11 +372,13 @@
                               >
 
                               <input
-                                type=""
+                                type="text"
                                 class="form-control"
                                 id="exampleInputEmail1"
                                 aria-describedby="emailHelp"
                                 placeholder="Branch name"
+                                name="name"
+                                (change)="setOutletData($event)"
                               />
                             </div>
                             <div class="brand-content-part">
@@ -502,29 +389,27 @@
                                 Branch Address :</label
                               >
 
-                              <input
-                                type=""
-                                class="form-control"
-                                id="exampleInputEmail1"
-                                aria-describedby="emailHelp"
-                                placeholder="Fill Business Full Legal Address Here"
-                              />
+                              <input id="typeahead-basic" type="text" class="form-control"  name="address"
+                              (change)="setOutletData($event)"/>
                             </div>
                             <div class="brand-content-part">
+                              <input ngx-google-places-autocomplete (onAddressChange)="test($event)" />
                               <input
                                 type="text"
                                 class="form-control"
-                                id="exampleInputEmail1"
+                                id="autoSearchAddress"
                                 aria-describedby="emailHelp"
                                 class="empty-field"
                               />
                             </div>
                             <div class="brand-content-part">
-                              <select>
+                              <select name="city" (change)="setOutletData($event)">
                                 <option>Select City</option>
+                                <option value="qatar">Qatar</option>
                               </select>
-                              <select>
+                              <select name="state" (change)="setOutletData($event)">
                                 <option>Select State</option>
+                                <option>Dubai</option>
                               </select>
                               <input
                                 type=""
@@ -533,6 +418,8 @@
                                 aria-describedby="emailHelp"
                                 placeholder="zip code"
                                 class="zip"
+                                name="zipcode"
+                                (change)="setOutletData($event)"
                               />
                             </div>
                             <div class="brand-content-part">
@@ -620,33 +507,25 @@
                               <p>Pricing</p>
                             </div>
                             <div class="text-container">
-                              <p>Plan 3</p>
-                              <p>QAR 780.00</p>
+                              <p>{{onePlan.planName}}</p>
+                              <p>QAR {{onePlan.planTypeAmount}}</p>
                             </div>
                             <h6>Addon Features</h6>
                             <div class="text-container">
-                              <p>Insights</p>
-                              <p>QAR 240.00</p>
-                            </div>
-                            <div class="text-container">
-                              <p>Campaigns</p>
-                              <p>QAR 240.00</p>
-                            </div>
-                            <div class="text-container">
-                              <h6>Subtotal</h6>
-                              <p>QAR 1260.00</p>
+                              <p>{{feature.name}}</p>
+                              <p>QAR {{feature.value}}</p>
                             </div>
                             <div class="text-container">
                               <p>Subtotal After Discount</p>
-                              <p>QAR 1134.00</p>
+                              <p>QAR {{subtotal({feature: feature.value,plan: onePlan.planTypeAmount})}}</p>
                             </div>
                             <div class="text-container">
                               <p>Branch Pricing</p>
-                              <p>QAR 4550.00</p>
+                              <p>QAR {{Branch}}</p>
                             </div>
                             <div class="text-container">
                               <h6>Total (QAR)</h6>
-                              <p>QAR 5684.00</p>
+                              <p>QAR {{total({branch: Branch, subtotal: subtotalAmount})}}</p>
                             </div>
                             <button class="btn-payment text-capitalize">
                               CONFIRM & NEXT
@@ -656,7 +535,7 @@
                       </div>
                     </ng-template>
                   </ng-container>
-                  <ng-container ngbNavItem>
+                  <ng-container [ngbNavItem]="3">
                     <a ngbNavLink>INVOICES/PAYMENTS</a>
                     <ng-template ngbNavContent>
                       <div class="row">

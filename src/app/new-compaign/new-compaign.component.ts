@@ -7,19 +7,24 @@ import { UserapiService } from '../user/userapi.service';
 @Component({
   selector: 'app-new-compaign',
   templateUrl: './new-compaign.component.html',
-  styleUrls: ['./new-compaign.component.sass']
+  styleUrls: ['./new-compaign.component.sass'],
 })
 export class NewCompaignComponent implements OnInit, OnDestroy {
   public model!: NgbDateStruct;
-  public accordianActive: string = ""
-  public accordianOutletStart: boolean = false
-  public accordianSegmentStart: boolean = false
-  public accordianRewardsStart: boolean = false
-  public accordianScheduleStart: boolean = false
+  public accordianActive: string = '';
+  public accordianOutletStart: boolean = false;
+  public accordianSegmentStart: boolean = false;
+  public accordianRewardsStart: boolean = false;
+  public accordianScheduleStart: boolean = false;
+  public selectdOutlet: any = '';
+  public selectdOutletid: any = '';
+  public selectdAge: any = '';
+  public selectdCountry: any = '';
+  public brandName: any = '';
   campaignName: any = '';
   toggleTimer: boolean = false;
   brandOutletList: any;
-  isTopCustome:boolean = false;
+  isTopCustome: boolean = false;
 
   hoveredDate: NgbDate | null = null;
 
@@ -27,11 +32,11 @@ export class NewCompaignComponent implements OnInit, OnDestroy {
   toDate: NgbDate | null = null;
 
   campaignModel: any = {
-    campaignName:'',
+    campaignName: '',
     outletName: '',
     segment: '',
     segmentDetail: '',
-    topCustomer:'',
+    topCustomer: '',
     rewardName: '',
     rewardExpireDate: '',
     rewardMessage: '',
@@ -44,64 +49,79 @@ export class NewCompaignComponent implements OnInit, OnDestroy {
     private userService: UserapiService,
     private router: Router,
     private commonService: CommonService,
-    private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) { }
+    private calendar: NgbCalendar,
+    public formatter: NgbDateParserFormatter
+  ) {}
 
   ngOnInit(): void {
     this.campaignName = localStorage.getItem('campaignName')!;
     this.campaignModel.campaignName = this.campaignName;
 
-    this.getBrandOutlets()
+    this.getBrandOutlets();
+    this.brandName = localStorage.getItem('brandName');
   }
 
   setaccordianActive(accord: string) {
-    this.accordianActive = accord
+    this.accordianActive = accord;
   }
 
   setaccordianState(active: string) {
+    this.accordianOutletStart = !this.accordianOutletStart;
 
-    this.accordianOutletStart = !this.accordianOutletStart
+    this.accordianSegmentStart = !this.accordianSegmentStart;
 
-    this.accordianSegmentStart = !this.accordianSegmentStart
+    this.accordianRewardsStart = !this.accordianRewardsStart;
 
-    this.accordianRewardsStart = !this.accordianRewardsStart
-
-    this.accordianScheduleStart = !this.accordianScheduleStart
-
+    this.accordianScheduleStart = !this.accordianScheduleStart;
   }
 
   onSaveCampaign() {
-     this.userService.createCampaign(this.campaignModel).subscribe(data => {
-       this.router.navigate(['campaign']);
-    },(err) => this.commonService.toastNotification('Error',err,'Danger'))
+    this.userService.createCampaign(this.campaignModel).subscribe(
+      (data) => {
+        this.router.navigate(['campaign']);
+      },
+      (err) => this.commonService.toastNotification('Error', err, 'Danger')
+    );
   }
 
   getBrandOutlets() {
     let brandId = localStorage.getItem('brandId');
     this.userService.getBrandOutlets(brandId).subscribe((response: any) => {
       this.brandOutletList = response.data.brandOutlet;
-    })
+    });
   }
 
   toggleTime() {
     this.toggleTimer = !this.toggleTimer;
   }
-
+  selectedoutlet(outlet: any) {
+    localStorage.setItem('brandId', outlet._id);
+    this.selectdOutlet = outlet.name;
+    this.selectdOutletid = outlet._id;
+  }
   clicked() {
-    console.log("called");
+    console.log('called');
   }
 
   setTopCustomer(topCustomer: string) {
-    if (topCustomer != "custom")
-      this.campaignModel.segmentDetail = topCustomer
-    else
-      this.isTopCustome =true;
-
+    if (topCustomer != 'custom') this.campaignModel.segmentDetail = topCustomer;
+    else this.isTopCustome = true;
   }
-
+  onSelectAge(age: any) {
+    this.selectdAge = age;
+  }
+  onSelectCountry(coutry: any) {
+    this.selectdCountry = coutry;
+  }
   onDateSelection(date: NgbDate) {
     if (!this.fromDate && !this.toDate) {
       this.fromDate = date;
-    } else if (this.fromDate && !this.toDate && date && date.after(this.fromDate)) {
+    } else if (
+      this.fromDate &&
+      !this.toDate &&
+      date &&
+      date.after(this.fromDate)
+    ) {
       this.toDate = date;
     } else {
       this.toDate = null;
@@ -110,7 +130,13 @@ export class NewCompaignComponent implements OnInit, OnDestroy {
   }
 
   isHovered(date: NgbDate) {
-    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
+    return (
+      this.fromDate &&
+      !this.toDate &&
+      this.hoveredDate &&
+      date.after(this.fromDate) &&
+      date.before(this.hoveredDate)
+    );
   }
 
   isInside(date: NgbDate) {
@@ -118,15 +144,22 @@ export class NewCompaignComponent implements OnInit, OnDestroy {
   }
 
   isRange(date: NgbDate) {
-    return date.equals(this.fromDate) || (this.toDate && date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
+    return (
+      date.equals(this.fromDate) ||
+      (this.toDate && date.equals(this.toDate)) ||
+      this.isInside(date) ||
+      this.isHovered(date)
+    );
   }
 
   validateInput(currentValue: NgbDate | null, input: string): NgbDate | null {
     const parsed = this.formatter.parse(input);
-    return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
+    return parsed && this.calendar.isValid(NgbDate.from(parsed))
+      ? NgbDate.from(parsed)
+      : currentValue;
   }
 
-  selectOutlet(outletName:String) {
+  selectOutlet(outletName: String) {
     this.campaignModel.outletName = outletName;
   }
 

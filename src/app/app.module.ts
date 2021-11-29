@@ -36,7 +36,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { BrandRequestComponent } from './brand-request/brand-request.component';
-
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -69,8 +69,10 @@ const JWT_Module_Options: any = {
     NewOutletComponent,
     RegisterComponent,
     BrandRequestComponent,
+
   ],
   imports: [
+    GooglePlaceModule,
     BrowserModule,
     FormsModule,
     NgbModule,

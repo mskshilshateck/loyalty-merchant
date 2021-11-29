@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { UserapiService } from '../user/userapi.service'
 import { CommonService } from '../global/common.service'
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',

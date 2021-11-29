@@ -52,6 +52,7 @@ export class CompaignComponent implements OnInit {
 
   selectBrand(brand:any) {
     localStorage.setItem('brandId', brand._id);
+    localStorage.setItem('brandName', brand.name);
     this.selectedBrand = brand.name;
   }
 }

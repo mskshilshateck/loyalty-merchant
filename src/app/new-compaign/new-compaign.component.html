@@ -7,10 +7,10 @@
       <div class="new-comapign container">
         <form #campaignForm="ngForm" (ngSubmit)="onSaveCampaign()">
           <h5>
-            <a><img src="/assets/images/backIcon.svg" />Back to Campaigns</a>
+            <a href="/campaign"><img src="/assets/images/backIcon.svg" />Back to Campaigns</a>
           </h5>
           <div class="compaign-name">
-            <h6>Flat White</h6>
+            <h6 class="text-capitalize">{{brandName}}</h6>
             <div class="d-flex justify-content-between align-items-center">
               <h4 class="mb-0 koolText">{{ campaignName }}</h4>
               <button type="submit" class="btn btn-primary request">
@@ -71,39 +71,14 @@
                       {{ outlet.name }}
                     </button> -->
                       <button
+                      *ngFor="let outlets of brandOutletList"
                         type="button"
-                        (click)="selectOutlet('Al Gharafa')"
-                        class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                        [ngClass]="selectdOutlet !== '' && selectdOutletid == outlets._id ? 'active-btn mt-2 mb-2' : 'btn btn-outline-secondary btn-bordr mt-2 mb-2'"
+                        (click)="selectedoutlet(outlets)"
+                        class=""
                       >
-                        Al Gharafa
-                      </button>
-                      <button
-                        type="button"
-                        (click)="selectOutlet('Matar Kadeem')"
-                        class="btn btn-outline-secondary btn-bordr"
-                      >
-                        Matar Kadeem
-                      </button>
-                      <button
-                        type="button"
-                        (click)="selectOutlet('Doha Festival City')"
-                        class="btn btn-outline-secondary btn-bordr"
-                      >
-                        Doha Festival City
-                      </button>
-                      <button
-                        type="button"
-                        (click)="selectOutlet('Al Wakra')"
-                        class="btn btn-outline-secondary btn-bordr"
-                      >
-                        Al Wakra
-                      </button>
-                      <button
-                        type="button"
-                        (click)="selectOutlet('Souq Waqif')"
-                        class="btn btn-outline-secondary btn-bordr"
-                      >
-                        Souq Waqif
+                      {{outlets.name}}
+                        <!-- {{outlets}} -->
                       </button>
                     </div>
                   </div>
@@ -283,13 +258,15 @@
                       Top customers in the last period of time
                     </label>
                     <div *ngIf="campaignModel.segment == 'topCustomer'">
-                      Top
+                      Top&nbsp;&nbsp;&nbsp;&nbsp;
                       <input
                         type="text"
                         [(ngModel)]="campaignModel.topCustomer"
                         name="topCustomer"
                       />
+                      &nbsp;&nbsp;&nbsp;&nbsp;
                       from
+                      &nbsp;&nbsp;&nbsp;&nbsp;
                       <div ngbDropdown class="d-inline-block">
                         <button
                           class="btn dropdown-btn"
@@ -338,6 +315,67 @@
                     <label class="form-check-label">
                       Customers by age and country
                     </label>
+                    <div *ngIf="campaignModel.segment == 'ageCustomer'" class="outlet-content">
+                      <div class="form-check">
+                        Select age range
+                      </div>
+                        <button
+                          type="button"
+                          class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                          (click)="onSelectAge('All')"
+                          >
+                          All Ages
+                        </button>
+                        <button type="button"
+                                              class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                          (click)="onSelectAge('18-24')"
+
+                          >18-24</button>
+                        <button type="button"
+                                              class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                          (click)="onSelectAge('All')"
+
+                          >25-34</button>
+                        <button type="button"
+                                              class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                          >35-44</button>
+                        <button type="button"
+                                              class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                          >45-54</button>
+                        <button type="button"
+                                              class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                          >55-64</button>
+                        <button type="button"
+                                            class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                          >65+</button>
+                        <div class="form-check">
+                            Select country or region
+                        </div>
+                        <button type="button"
+                                                  class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                          >All Regions</button>
+                          <button type="button"
+                                               class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                          >Africa</button>
+                          <button type="button"
+                                             class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                          >Asia</button>                          <button type="button"
+                                               class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                          >Europe</button>                          <button type="button"
+                                                   class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                          >Middle East</button>
+                          <button type="button"
+                          
+                          class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                          >North America</button>
+                          <button type="button"
+                                                class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                          >Oceania</button>
+                          <button type="button"
+                          
+                          class="btn btn-outline-secondary btn-bordr mt-2 mb-2"
+                          >South America</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -389,11 +427,11 @@
                     <label for="exampleInputEmail1" class="form-label"
                       >When will this reward expire?</label
                     >
-                    <input type="date" class="form-control date-select" />
-                    <!-- <img
+                    <input type="date" class="form-control date-select" value="Select A Date" />
+                     <!-- <img
                       src="../../assets/images/icon-action-calendar.svg"
                       class="calender"
-                    /> -->
+                    />  -->
                   </div>
                   <div class="form-floating">
                     <div class="d-flex justify-content-between">
@@ -440,10 +478,10 @@
                             [(ngModel)]="campaignModel.campaignScheduledDate"
                             placeholder="Select a date"
                           />
-                          <img
+                          <!-- <img
                             src="../../assets/images/icon-action-calendar.svg"
                             class="calenderblur"
-                          />
+                          /> -->
                         </div>
 
                         <p class="text-alow">
